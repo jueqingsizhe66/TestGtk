@@ -32,11 +32,12 @@ public class TestGtkComboBoxText
 				GTK.gtk_main_quit();
 			}
 		}, null);
+		String names[] = {"Andy","Jerry","laulence","Lucy","jack"};
 		// 创建布局
 		gridHouse =  GTK.gtk_grid_new();
 		GTK.gtk_widget_show(gridHouse);
-		createComboBoxText(window,gridHouse,0);
-		
+		createComboBoxText(window,gridHouse,0);  //yij
+		loadComboBox(window, names, gridHouse, 2); //之所以从2开始 是因为 0 1已经被使用
 		GTK.gtk_container_add(window,gridHouse);
 		//启动循环
 		GTK.gtk_main();
@@ -158,5 +159,17 @@ public class TestGtkComboBoxText
 				GTK.gtk_label_set_text(label1, "您想要购买的"+fruit+"没有了！请到别家购买");
 			};
 		}, null);
+	}
+	
+	public static void loadComboBox(int window,String[] names, int gridHouse,int start)
+	{
+		int cmbApple = GTK.gtk_combo_box_text_new();
+		for(int  i = 0 ; i < names.length; i++)
+		{
+			GTK.gtk_combo_box_text_append_text(cmbApple, names[i]);
+		}
+		
+		GTK.gtk_widget_show(cmbApple);
+		GTK.gtk_grid_attach(gridHouse, cmbApple, 0, start, 1, 1);
 	}
 }

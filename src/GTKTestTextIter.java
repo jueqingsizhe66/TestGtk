@@ -6,7 +6,7 @@ import com.rupeng.gtk4j.IGCallBack;
 /**
  * @author 叶昭良
  * @version  TestView+TestIter v1.0
- * @version  TestView+TestIter v1.1 加入了滚动条操作。
+ * @version  TestView+TestIter v2.0 加入了滚动条操作。
  */
 public class GTKTestTextIter
 {
@@ -16,6 +16,7 @@ public class GTKTestTextIter
 	 */
 	static int window;
 	static int gridHouse;
+	static int scrolledBar;
 	public static void main(String[] args)
 	{
 		// TODO 自动生成的方法存根

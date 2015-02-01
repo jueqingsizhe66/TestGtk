@@ -42,7 +42,12 @@ public class TestGTKSPinBox
 		GTK.gtk_container_add(window, gridHouse);
 		GTK.gtk_main();
 	}
-	
+	/**
+	 * 
+	 * @param window     窗口标识
+	 * @param gridHouse  整租房标识
+	 * @param start      整租房的起始位置
+	 */
 	public static void createSpinbox(int window,int gridHouse,int start)
 	{
 		//定义控件

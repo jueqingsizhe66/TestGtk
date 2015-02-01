@@ -117,8 +117,11 @@ public class TestCalc
 				
 				
 				
-				panduan(plus1,entryOne);
-				panduan(plus2,entryAnother);
+				if(!(panduan(plus1,entryOne) &&  panduan(plus2,entryAnother)))
+				{
+					return;
+				}
+				
 				int sum1 = Integer.parseInt(plus1)+Integer.parseInt(plus2);
 				GTK.gtk_label_set_text(label2, Integer.toString(sum1));
 			}
@@ -134,6 +137,11 @@ public class TestCalc
 				String plus1 = GTK.gtk_entry_get_text(entryOne);
 				String plus2 = GTK.gtk_entry_get_text(entryAnother);
 				
+				if(!(panduan(plus1,entryOne) &&  panduan(plus2,entryAnother)))
+				{
+					return;
+				}
+				
 				int sum1 = Integer.parseInt(plus1)-Integer.parseInt(plus2);
 				GTK.gtk_label_set_text(label2, Integer.toString(sum1));
 			}
@@ -146,7 +154,7 @@ public class TestCalc
 	 * @param plus1  entry1的数字字符串
 	 * @param entry1 entry1的标识
 	 */
-	public static void panduan(String plus1,int entry1)
+	public static boolean panduan(String plus1,int entry1)
 	{
 
 		char[] panduanOne = plus1.toCharArray();
@@ -159,9 +167,10 @@ public class TestCalc
 			{
 				JOptionPane.showMessageDialog(null, "您输入的Entry项不是整数数字,已经置为空 请重新输入");
 				GTK.gtk_entry_set_text(entry1, "");
-				return;
+				return false;
 			}
 		}
+		return true;
 
 	}
 

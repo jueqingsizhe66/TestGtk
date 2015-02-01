@@ -6,7 +6,7 @@ import com.rupeng.gtk4j.IGCallBack;
 
 /**
  * @author 叶昭良
- * @version 省市联轴器 V1.0
+ * @version 省市联动器 V1.0
  *
  */
 public class ProvincedSelect

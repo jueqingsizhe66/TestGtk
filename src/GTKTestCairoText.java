@@ -27,7 +27,7 @@ public class GTKTestCairoText
 		//窗口标识
 		window = GTK.gtk_window_new(GTK.GTK_WINDOW_TOPLEVEL);
 		//窗口标题
-		GTK.gtk_window_set_title(window, "简易画图板v1.0");
+		GTK.gtk_window_set_title(window, "简易画图板v2.0");
 		//显示窗口
 		GTK.gtk_widget_show(window);
 		
