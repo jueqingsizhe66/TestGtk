@@ -127,5 +127,38 @@ public class GTKTestTextIter
 		GTK.gtk_widget_set_size_request(scrolledBar, 300, 50);
 		GTK.gtk_container_add(scrolledBar,textview);
 	}
+	
+	public static void createSingleTextView(int window, int gridHouse, int start)
+	{
+
+		final int tvGirl = GTK.gtk_text_view_new();
+
+
+
+		GTK.gtk_text_view_set_wrap_mode(tvGirl, GTK.GTK_WRAP_WORD);
+		int scrollBar = 0 ;
+		//添加控件
+	
+		createScrollBar(scrollBar,tvGirl,gridHouse,start);
+		//GTK.gtk_grid_attach(gridHouse, tvGirl, 0, start+1, 1, 1);
+
+		//显示控件
+
+		GTK.gtk_widget_show(tvGirl);
+
+		
+		//读取文本框里面的内容 ，只适用小量的文本，一般用迭代器
+		//方法1   先从TextView获取int TextBuffer 
+		    //    然后再从TextBuffer获取text
+		final int textbuffer= GTK.gtk_text_view_get_buffer(tvGirl);
+		String loveWords = "你就像那天上星星，点缀着我们两的星空，璀璨夺目；"
+				+ "我愿与你携手共同奋进，原因和你共育我们的sons and grils,"
+				+ "建立起一个幸福的家庭";
+		
+		//可以直接通过缓冲区编号  设置信息
+		GTK.gtk_text_buffer_set_text(textbuffer, loveWords);
+		
+
+	}
 
 }

@@ -7,9 +7,7 @@ import java.math.BigInteger;
 public class TestRecursive
 {
 
-	/**
-	 * @param args
-	 */
+
 	/**
 	 * 
 	 * @param args
