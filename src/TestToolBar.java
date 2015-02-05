@@ -173,6 +173,7 @@ public class TestToolBar
 		}, null);
 		
 		GTK.gtk_progress_bar_set_text(pbApple, "«Î…‘∫Û");
+		GTK.gtk_progress_bar_set_show_text(pbApple, true);
 	}
 	
 	public static void createSwitchOn(int gridHouse, int start)
