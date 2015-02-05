@@ -10,8 +10,9 @@ import com.rupeng.gtk4j.IGCallBack;
  * @author    叶昭良
  * @time      2015年2月6日上午3:00:26
  * @version   GTKEncapsulateOOComboBox V1.0
+ *                                    V2.0  设置集成来自OOCombo
  */
-public class OOComboBox extends OOBin
+public class OOComboBox extends OOCombo
 {
 	/**
 	 *  ComboBox的构造函数
@@ -38,14 +39,7 @@ public class OOComboBox extends OOBin
 	{
 		GTK.gtk_combo_box_text_append(this.getId(), Id, item);
 	}
-	/**
-	 * 
-	 * @param callback  回调函数 用于响应Combobox的changed事件
-	 */
-	public void addChangedListern(IGCallBack callback)
-	{
-		GTK.g_signal_connect(this.getId(), "changed", callback, null);
-	}
+
 	
 	/**
 	 * 
@@ -79,5 +73,21 @@ public class OOComboBox extends OOBin
 	public void setActive(String Id)
 	{
 		GTK.gtk_combo_box_set_active_id(this.getId(), Id);
+	}
+	/**
+	 * 
+	 * @param position  待删除的位置
+	 *   删除某个位置的项。
+	 */
+	public void remove(int position)
+	{
+		GTK.gtk_combo_box_text_remove(this.getId(),position);
+	}
+	/**
+	 *   去除所有的Item项
+	 */
+	public void removeAll()
+	{
+		GTK.gtk_combo_box_text_remove_all(this.getId());
 	}
 }
