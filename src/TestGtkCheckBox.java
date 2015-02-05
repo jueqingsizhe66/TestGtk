@@ -6,7 +6,8 @@ import com.rupeng.gtk4j.IGCallBack;
 
 /**
  * @author 叶昭良
- * @version  v1.0
+ * @version  v1.0   Checkbox的用法
+ *                  在checkbox的基础上琢磨出来的radiobutton的用法
  */
 public class TestGtkCheckBox
 {
@@ -39,11 +40,13 @@ public class TestGtkCheckBox
 		box = GTK.gtk_box_new(GTK.GTK_ORIENTATION_VERTICAL, 0);
 		int box2= GTK.gtk_box_new(GTK.GTK_ORIENTATION_VERTICAL,0);
 		int box1= GTK.gtk_box_new(GTK.GTK_ORIENTATION_VERTICAL,0);
+		int box3= GTK.gtk_box_new(GTK.GTK_ORIENTATION_VERTICAL,0);
 		testGtkCheckBox(window,box2);
 		testGtkCheckBoxInstall(window,box1);
+		testGtkRadioBox(window,box3);
 		GTK.gtk_box_pack_start(box, box2, false, false, 0);
 		GTK.gtk_box_pack_start(box, box1, false, false, 0);
-
+		GTK.gtk_box_pack_start(box, box3, false, false, 0);
 		GTK.gtk_container_add(window, box);
 		GTK.gtk_widget_show(box);
 		GTK.gtk_main();
@@ -65,6 +68,27 @@ public class TestGtkCheckBox
 		GTK.gtk_widget_show(cbMan);
 		GTK.gtk_widget_show(cbWoman);
 		GTK.gtk_widget_show(box2);
+	
+	}
+	
+	public static void testGtkRadioBox(int window,int box3)
+	{
+		
+		//GTK.gtk_g
+		//int person = GTK.gtk_radio_button_new(person);
+		//GTK.gtk_radio_button_new(3);
+		int cbMan = GTK.gtk_radio_button_new_with_label(0, "男");
+		int cbWoman = GTK.gtk_radio_button_new_with_label_from_widget(cbMan, "女");
+		
+		
+		
+		GTK.gtk_box_pack_start(box3, cbMan, false,false	, 0);
+		GTK.gtk_box_pack_start(box3, cbWoman, false,false	, 0);
+		
+		
+		GTK.gtk_widget_show(cbMan);
+		GTK.gtk_widget_show(cbWoman);
+		GTK.gtk_widget_show(box3);
 	
 	}
 	public static void testGtkCheckBoxInstall(int window,int box1)

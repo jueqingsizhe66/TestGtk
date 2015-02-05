@@ -10,7 +10,7 @@ import com.rupeng.gtk4j.GTK;
  * @time      2015年2月5日下午2:34:00
  * @version   GTKEncapsulateOOToolBar V1.0
  */
-public class OOToolBar extends OOWidget
+public class OOToolBar extends OOContainer
 {
 	private static ToolButton[] tbApple = new ToolButton[10];
 	private static int i = 0;

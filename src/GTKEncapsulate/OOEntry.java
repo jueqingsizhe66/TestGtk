@@ -5,6 +5,7 @@ package GTKEncapsulate;
  * @author    叶昭良
  * @time      2015年2月4日下午10:52:17
  * @version   GTKEncapsulateOOEntry V1.0
+ *                                  v2.0 修改getText的返回值从void 到String
  */
 
 import com.rupeng.gtk4j.GTK;
@@ -53,8 +54,8 @@ public class OOEntry extends OOWidget
 	/**
 	 *   读取文本框的文本
 	 */
-	public void getText()
+	public String getText()
 	{
-		GTK.gtk_entry_get_text(getId());
+		return GTK.gtk_entry_get_text(getId());
 	}
 }

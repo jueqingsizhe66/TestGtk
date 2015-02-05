@@ -3,11 +3,15 @@ package GTKEncapsulate;
 /**
  * @author    叶昭良
  * @time      2015年2月4日下午10:30:18
- * @version   GTKEncapsulateOOEntry V1.0
+ * @version   GTKEncapsulateOOEntry V1.0  显示、隐藏、摧毁； 两个事件监听；最为基本的setID getID
+ *                                  V2.0  修改了click时间的信号从click到clicked
+ *                                  V3.0  把OOWidget 标记为抽象类！ 这样防止用户
+ *                                        直接OOWidget ow = new OOWidget() ; ow.show()
+ *                                        这完全是无意义的工作
  */
 import com.rupeng.gtk4j.GTK;
 import com.rupeng.gtk4j.IGCallBack;
-public class OOWidget
+public abstract class OOWidget
 {
 	//每一个控件都需要通过控件句柄进行唯一的标识
 	private int Id;
@@ -94,7 +98,7 @@ public class OOWidget
 	{
 		//this.Id 也可以用 getId的方法  但是最好还是用 getId因为里面有异常机制
 		//GTK.g_signal_connect(this.Id, "click", callback, null); 
-		GTK.g_signal_connect(getId(), "click", callback, null);
+		GTK.g_signal_connect(getId(), "clicked", callback, null);
 	}
 	/**
 	 * 

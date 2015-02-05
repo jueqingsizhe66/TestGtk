@@ -8,9 +8,9 @@ import com.rupeng.gtk4j.GTK;
 /**
  * @author    叶昭良
  * @time      2015年2月4日下午11:45:20
- * @version   GTKEncapsulateOOGrid V1.0
+ * @version   GTKEncapsulateOOGrid V1.0  
  */
-public class OOGrid extends OOWidget
+public class OOGrid extends OOContainer
 {
 	public OOGrid()
 	{

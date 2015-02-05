@@ -8,7 +8,7 @@ import com.rupeng.gtk4j.GTK;
  * @time      2015年2月4日下午11:08:44
  * @version   GTKEncapsulateOOTextView V1.0
  */
-public class OOTextView  extends OOWidget
+public class OOTextView  extends OOContainer
 {
 	public OOTextView()
 	{

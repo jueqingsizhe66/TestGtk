@@ -6,7 +6,8 @@ import com.rupeng.gtk4j.GTK;
 /**
  * @author    叶昭良
  * @time      2015年2月5日下午4:38:57
- * @version   GTKEncapsulateOOFileChooser V1.0
+ * @version   GTKEncapsulateOOFileChooser V1.0 把类标记为abstract，这样的类无法被直接实例化（new）
+ *                                     ，这就叫抽象类。
  */
 public abstract class OOFileChooser extends OOWidget
 {

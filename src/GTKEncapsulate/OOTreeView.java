@@ -9,7 +9,7 @@ import com.rupeng.gtk4j.IGCallBack;
  * @time      2015年2月5日上午12:32:21
  * @version   GTKEncapsulateOOTreeView V1.0
  */
-public class OOTreeView extends OOWidget
+public class OOTreeView extends OOContainer
 {
 	private static int liststore;
 	private static int listiter;
