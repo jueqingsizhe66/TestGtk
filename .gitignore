@@ -1,2 +1,6 @@
 /bin/
+
 /gtk/
+*.html
+*.js
+*.css
