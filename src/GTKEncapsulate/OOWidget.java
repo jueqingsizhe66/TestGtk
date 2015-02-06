@@ -15,7 +15,18 @@ public abstract class OOWidget
 {
 	//每一个控件都需要通过控件句柄进行唯一的标识
 	private int Id;
+	public IGCallBack IGCquit = new IGCallBack()
+	{
+		
+		@Override
+		public void execute(int instance, int eventData, Object object)
+		{
+			// TODO Auto-generated method stub
+			GTK.gtk_main_quit();
+		}
+	};
 	
+
 	/**
 	 * 
 	 * @return  返回GTKWidget的ID或者叫做对象标识  ，C语言的指针 句柄
@@ -98,7 +109,7 @@ public abstract class OOWidget
 	{
 		//this.Id 也可以用 getId的方法  但是最好还是用 getId因为里面有异常机制
 		//GTK.g_signal_connect(this.Id, "click", callback, null); 
-		GTK.g_signal_connect(getId(), "clicked", callback, null);
+		GTK.g_signal_connect(this.getId(), "clicked", callback, null);
 	}
 	/**
 	 * 

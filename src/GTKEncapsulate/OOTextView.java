@@ -28,7 +28,11 @@ public class OOTextView  extends OOContainer
 	 */
 	public void setType(int tvType)
 	{
-		GTK.gtk_text_view_set_wrap_mode(getId(), tvType);
+		GTK.gtk_text_view_set_wrap_mode(this.getId(), tvType);
+	}
+	public void setType()
+	{
+		GTK.gtk_text_view_set_wrap_mode(this.getId(), GTK.GTK_WRAP_WORD_CHAR);
 	}
 	/**
 	 * 
@@ -61,11 +65,14 @@ public class OOTextView  extends OOContainer
 	 * @param width   滚动条的高度（超过则出现）
 	 * @param height  滚动条的高度（超过则出现）
 	 */
-	public void addScrollBar(int width, int height)
+	public void addScrollBar(OOGrid og,int start,int width, int height)
 	{
 		OOScrollBar osb = new OOScrollBar();
 		osb.setWidgetSize(width, height);
 		osb.addView(this.getId());
+		osb.show();
+		og.add(osb.getId(), start);
+		
 	}
 	
 

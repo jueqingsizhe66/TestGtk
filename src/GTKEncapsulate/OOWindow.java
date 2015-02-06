@@ -66,6 +66,6 @@ public class OOWindow extends OOBin
 	//也就是当收到 destroy信号的时候 不一定是关闭的（一般我们写的时候是关闭的）
 	public void setExitAfterDestroy(boolean value)
 	{
-		this.exitAfterDestroy  = true;
+		this.exitAfterDestroy  = value;
 	}
 }

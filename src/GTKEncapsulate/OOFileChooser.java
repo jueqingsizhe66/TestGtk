@@ -8,6 +8,8 @@ import com.rupeng.gtk4j.GTK;
  * @time      2015年2月5日下午4:38:57
  * @version   GTKEncapsulateOOFileChooser V1.0 把类标记为abstract，这样的类无法被直接实例化（new）
  *                                     ，这就叫抽象类。
+ *                                     V2.0   修改了run方法
+ *                                     V3.0   抽象方法的返回值从void 该到了String[]
  */
 public abstract class OOFileChooser extends OOWidget
 {
@@ -65,12 +67,18 @@ public abstract class OOFileChooser extends OOWidget
 		fi.addFilterPattern(pattern);
 	}
 	
+	public void finishFilter()
+	{
+		GTK.gtk_file_chooser_add_filter(this.getId(), fi.getId());
+	}
+	
 	/**
 	 *    在一切设置完毕后  必须要让他run起来，类似于线程的做法,并且一定要摧毁它 this.destroy..
 	 */
-	public  void  run()
+	public  int run()
 	{
 		response =  GTK.gtk_dialog_run(this.getId());
+		return response;
 	}
 	
 	
@@ -81,8 +89,10 @@ public abstract class OOFileChooser extends OOWidget
 	
 	/**
 	 *   一个抽象方法 ，要求继承者去实现它
+	 *   多了一个
 	 */
-	public abstract void processResponse();
+	//public abstract void processResponse();
+	public abstract String[] processResponse();
 	/**
 	 * 
 	 * @author    叶昭良
@@ -111,5 +121,7 @@ public abstract class OOFileChooser extends OOWidget
 		{
 			GTK.gtk_file_filter_add_pattern(this.getId(), pattern);
 		}
+		
+
 	}
 }

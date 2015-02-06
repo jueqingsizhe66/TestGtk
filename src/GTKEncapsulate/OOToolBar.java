@@ -19,13 +19,14 @@ public class OOToolBar extends OOContainer
 		setId(GTK.gtk_toolbar_new());
 	}
 	
-	public void addTool(String toolName,String toolPic,int position)
+	public ToolButton addTool(String toolName,String toolPic,int position)
 	{
 		tbApple[i] = new ToolButton(toolName);
 		tbApple[i].show();
 		tbApple[i].setStock(toolPic);
 		GTK.gtk_toolbar_insert(this.getId(), tbApple[i].getId(), position);
 		i++;
+		return tbApple[i-1];
 		
 	}
 	
