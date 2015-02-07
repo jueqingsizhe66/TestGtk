@@ -6,9 +6,10 @@ import com.rupeng.gtk4j.IGCallBack;
 /**
  * @author    叶昭良
  * @time      2015年2月5日下午3:24:04
- * @version   GTKEncapsulateOOCalender V1.0
+ * @version   GTKEncapsulateOOCalender V1.0 继承自OOWIdget
+ *                                     V2.0 继承自OODialog
  */
-public class OOCalender extends OOWidget
+public class OOCalender extends OODialog
 {
 	public OOCalender()
 	{

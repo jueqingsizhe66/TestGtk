@@ -237,36 +237,52 @@ class OpenFile extends OOFileChooser
 			GTK.gtk_widget_destroy(this.getId());
 		}
 		return filenames;
+	}
+
+	@Override
+	public void processResponse1()
+	{
+		// TODO Auto-generated method stub
+		
 	}		
 }
 
 class SaveFile extends OOFileChooser
 {
+	private String[] filenames;
 	public SaveFile(String title, int action, String buttonText)
 	{
 		setId(GTK.gtk_file_chooser_dialog_new(title, 0, action, buttonText));
 	}
 	@Override
-	public String[] processResponse()
+	public void processResponse1()
 	{
-		String[] filenames = null;
+		filenames = null;
 		GTK.gtk_file_chooser_set_do_overwrite_confirmation(this.getId(), true);
 		// TODO Auto-generated method stub
 		System.out.println("ÒÑ½øÈësave");
 		//SaveOneFile(filename,textview);
-		int ret = GTK.gtk_dialog_run(this.getId());
+		//int ret = GTK.gtk_dialog_run(this.getId());
+		int ret = run();
 		if(ret == GTK.GTK_RESPONSE_CANCEL)
 		{
 			GTK.gtk_widget_destroy(this.getId());
 		}else 
 		{
 			String filename = GTK.gtk_file_chooser_get_filename(this.getId());
-			filenames[0] = filename;
+			filenames[1] = filename;
 			System.out.println(filename);
-			GTK.gtk_widget_destroy(this.getId());
-			return  filenames;
+			//GTK.gtk_widget_destroy(this.getId());
+			this.destroy();
+			
 		}
-		return filenames;
 		
+		
+	}
+	@Override
+	public String[] processResponse()
+	{
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

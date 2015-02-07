@@ -10,11 +10,13 @@ import com.rupeng.gtk4j.GTK;
  *                                     ，这就叫抽象类。
  *                                     V2.0   修改了run方法
  *                                     V3.0   抽象方法的返回值从void 该到了String[]
+ *                                     v4.0   修改OOFileChooser继承类为来自OODailog
+ *                                            并把public int run()方法提到OODialog中
  */
-public abstract class OOFileChooser extends OOWidget
+public abstract class OOFileChooser extends OODialog
 {
 	private static Filter fi ;
-	private static int response;  //对话框的响应
+	//private static int response;  //对话框的响应
 	/**
 	 * 
 	 * @param title     有参构造函数的窗口标题
@@ -72,14 +74,7 @@ public abstract class OOFileChooser extends OOWidget
 		GTK.gtk_file_chooser_add_filter(this.getId(), fi.getId());
 	}
 	
-	/**
-	 *    在一切设置完毕后  必须要让他run起来，类似于线程的做法,并且一定要摧毁它 this.destroy..
-	 */
-	public  int run()
-	{
-		response =  GTK.gtk_dialog_run(this.getId());
-		return response;
-	}
+
 	
 	
 	public String[]  getFileNames()
@@ -91,8 +86,8 @@ public abstract class OOFileChooser extends OOWidget
 	 *   一个抽象方法 ，要求继承者去实现它
 	 *   多了一个
 	 */
-	//public abstract void processResponse();
-	public abstract String[] processResponse();
+	public abstract void processResponse1();  //用于保存
+	public abstract String[] processResponse(); //用于打开
 	/**
 	 * 
 	 * @author    叶昭良

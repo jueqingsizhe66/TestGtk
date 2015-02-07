@@ -29,7 +29,8 @@ public class OOBox extends OOContainer
 	 */
 	public OOBox(int orientation)
 	{
-		setId(GTK.gtk_box_new(orientation,0));
+		this(orientation,0);
+		//setId(GTK.gtk_box_new(orientation,0));
 	}
 	/**
 	 *   无参构造函数的默认是水平布局
