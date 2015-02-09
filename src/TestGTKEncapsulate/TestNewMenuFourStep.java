@@ -1,6 +1,6 @@
 
-package GTKEncapsulate;
-
+package TestGTKEncapsulate;
+import GTKEncapsulate.*;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -19,8 +19,6 @@ import com.rupeng.gtk4j.IGCallBack;
  *               OOSubMenu.java
  *               OOSingleMenu.java
  *               OOMenuVetetable.menu   依次创建四个类即可
- *               
- *               V2.0 修改了一个bug  saveFile中processResponse 改为 processResponse1
  */
 public class TestNewMenuFourStep
 {
@@ -162,7 +160,7 @@ public class TestNewMenuFourStep
 		SaveFileNew ofBanana = new SaveFileNew("保存文件",GTK.GTK_FILE_CHOOSER_ACTION_SAVE,"保存");
 		//把filter的操作放入打开对话框中
 		
-		ofBanana.processResponse1();
+		ofBanana.processResponse();
 	}
 	
 	public static void showAllFiles(String[] filenames,OOTextView otv)

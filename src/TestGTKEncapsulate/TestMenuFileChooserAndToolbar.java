@@ -1,4 +1,4 @@
-package GTKEncapsulate;
+package TestGTKEncapsulate;
 
 
 
@@ -11,6 +11,7 @@ import java.io.InputStreamReader;
 import com.rupeng.gtk4j.GTK;
 import com.rupeng.gtk4j.IGCallBack;
 
+import GTKEncapsulate.*;
 /**
  * 
  * @author    叶昭良
@@ -27,7 +28,7 @@ import com.rupeng.gtk4j.IGCallBack;
  *涉及到的文件      OOMenu.java （这是主要的类包含另外一种方法的OOMenuBar OOSubMenu OOSingleMenu)
  *              OOMenuVegetable.java （这是原先从OOMenu剥离出来的一个文件）
  *              
- *             V2.0 修改了一个bug  saveFile中processResponse 改为 processResponse1
+ *              V2.0  ToolButton 改为了OOToolButton  这样其他包才可以使用。
  */
 public class TestMenuFileChooserAndToolbar
 {
@@ -174,7 +175,7 @@ public class TestMenuFileChooserAndToolbar
 		SaveFile ofBanana = new SaveFile("保存文件",GTK.GTK_FILE_CHOOSER_ACTION_SAVE,"保存");
 		//把filter的操作放入打开对话框中
 		
-		ofBanana.processResponse1();
+		ofBanana.processResponse();
 	}
 	
 	public static void showAllFiles(String[] filenames,OOTextView otv)

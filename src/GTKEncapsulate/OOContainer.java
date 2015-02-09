@@ -15,6 +15,15 @@ public class OOContainer extends OOWidget
 {
 	/**
 	 *   防止用户调用无参的构造函数而出错？？？！！！
+	 *    如果你去掉这个无参构造函数，那么如果子类没有定义构造函数
+	 *    默认会添加
+	 *    public 子类()
+	 *    {
+	 *      super() ; //调用无参
+	 *    }
+	 *    
+	 *    2：如果你已经定义了有参构造函数，那么无参构造函数就会取消，也就是super()
+	 *    根本就没有函数给你调用，所以肯定是报错。（比如OOBin并没有构造函数 只是重载了add方法）
 	 */
 	protected OOContainer()
 	{
@@ -22,7 +31,7 @@ public class OOContainer extends OOWidget
 	}
 	/**
 	 * 
-	 * @param id   设置一个Container的id值
+	 * @param id   设置一个Container的id值 ，用于OODialog的contentarea的封装
 	 */
 	protected OOContainer(int id)
 	{

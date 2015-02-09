@@ -12,16 +12,16 @@ import com.rupeng.gtk4j.GTK;
  */
 public class OOToolBar extends OOContainer
 {
-	private static ToolButton[] tbApple = new ToolButton[10];
+	private static OOToolButton[] tbApple = new OOToolButton[10];
 	private static int i = 0;
 	public OOToolBar()
 	{
 		setId(GTK.gtk_toolbar_new());
 	}
 	
-	public ToolButton addTool(String toolName,String toolPic,int position)
+	public OOToolButton addTool(String toolName,String toolPic,int position)
 	{
-		tbApple[i] = new ToolButton(toolName);
+		tbApple[i] = new OOToolButton(toolName);
 		tbApple[i].show();
 		tbApple[i].setStock(toolPic);
 		GTK.gtk_toolbar_insert(this.getId(), tbApple[i].getId(), position);
@@ -30,7 +30,7 @@ public class OOToolBar extends OOContainer
 		
 	}
 	
-	class ToolButton extends OOWidget
+	/*class ToolButton extends OOWidget
 	{
 		public ToolButton(String toolName)
 		{
@@ -41,5 +41,5 @@ public class OOToolBar extends OOContainer
 		{
 			GTK.gtk_tool_button_set_stock_id(this.getId(), stock_id);
 		}
-	}
+	}*/
 }

@@ -69,9 +69,9 @@ public class OOTextView  extends OOContainer
 	{
 		OOScrollBar osb = new OOScrollBar();
 		osb.setWidgetSize(width, height);
-		osb.addView(this.getId());
+		osb.addView(this);
 		osb.show();
-		og.add(osb.getId(), start);
+		og.add(osb, start);
 		
 	}
 	

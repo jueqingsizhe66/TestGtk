@@ -1,8 +1,8 @@
 /**
  * 
  */
-package GTKEncapsulate;
-
+package TestGTKEncapsulate;
+import GTKEncapsulate.*;
 import com.rupeng.gtk4j.GTK;
 import com.rupeng.gtk4j.IGCallBack;
 

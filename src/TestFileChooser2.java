@@ -325,6 +325,7 @@ public class TestFileChooser2
 		int btnApple = GTK.gtk_button_new_with_label("幽灵点击");
 		
 		//action_are获得一个 类似box,grid的作用，可以添加容器
+		
 		int areaDialog = GTK.gtk_dialog_get_action_area(dialogApple);
 		GTK.gtk_widget_show(btnApple);
 		GTK.gtk_container_add(areaDialog, btnApple);

@@ -8,6 +8,7 @@ package GTKEncapsulate;
  *                                  V3.0  把OOWidget 标记为抽象类！ 这样防止用户
  *                                        直接OOWidget ow = new OOWidget() ; ow.show()
  *                                        这完全是无意义的工作
+ *                                  V4.0  注释掉MessageDialog的过程，这部分在新的OODialog已经有了
  */
 import com.rupeng.gtk4j.GTK;
 import com.rupeng.gtk4j.IGCallBack;
@@ -77,7 +78,7 @@ public abstract class OOWidget
 	 */
 	public void show()
 	{
-		GTK.gtk_widget_show(getId());
+		GTK.gtk_widget_show(this.getId());
 	}
 	/**
 	 *   隐藏控件
@@ -121,13 +122,13 @@ public abstract class OOWidget
 		GTK.g_signal_connect(getId(),"destroy",callback,null);
 	}
 	
-	//////////我想着每一个空间应该都是能够创建消息的小窗口的，当你输入不对的时候
-	/**
+/*	//////////我想着每一个空间应该都是能够创建消息的小窗口的，当你输入不对的时候
+	*//**
 	 * 
 	 * @param message    消息窗口的消息
 	 * @param title      消息窗口的消息
 	 * @return           弹出一个消息窗口  返回值为ok
-	 */
+	 *//*
 	public static boolean showInfo(  String  message,String title)
 	{
 		int msgDlg = GTK.gtk_message_dialog_new(0, GTK.GTK_DIALOG_DESTROY_WITH_PARENT|
@@ -137,12 +138,12 @@ public abstract class OOWidget
 		GTK.gtk_widget_destroy(msgDlg);
 		return ret == GTK.GTK_RESPONSE_OK;
 	}
-	/**
+	*//**
 	 * 
 	 * @param message    问题窗口的消息
 	 * @param title      问题窗口的消息
 	 * @return           弹出一个YESNO 问题窗口  范围值为是不是
-	 */
+	 *//*
 	public static boolean showYesNo( String  message,String title)
 	{
 		int msgDlg = GTK.gtk_message_dialog_new(0, GTK.GTK_DIALOG_DESTROY_WITH_PARENT|
@@ -152,12 +153,12 @@ public abstract class OOWidget
 		GTK.gtk_widget_destroy(msgDlg);
 		return ret == GTK.GTK_RESPONSE_YES;
 	}
-	/**
+	*//**
 	 * 
 	 * @param message    确认窗口的消息
 	 * @param title      确认窗口的消息
 	 * @return           弹出一个OKCANCEL 确认窗口  返回值为是否确认
-	 */
+	 *//*
 	public static boolean showOkCancel( String  message,String title)
 	{
 		int msgDlg = GTK.gtk_message_dialog_new(0, GTK.GTK_DIALOG_DESTROY_WITH_PARENT|
@@ -167,5 +168,5 @@ public abstract class OOWidget
 		GTK.gtk_widget_destroy(msgDlg);
 		return ret == GTK.GTK_RESPONSE_OK;
 	}
-
+*/
 }

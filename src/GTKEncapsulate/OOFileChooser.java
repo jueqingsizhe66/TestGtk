@@ -12,6 +12,10 @@ import com.rupeng.gtk4j.GTK;
  *                                     V3.0   抽象方法的返回值从void 该到了String[]
  *                                     v4.0   修改OOFileChooser继承类为来自OODailog
  *                                            并把public int run()方法提到OODialog中
+ *                                     V5.0   利用OOFileAction枚举类 重新编写了OOFIleChooser
+ *                                     V6.0   创建了setDoOverWrittenConfirmatio函数，并在封装构造函数中
+ *                                            运用了一个判断技巧，增加了 getFileName()  setCurrentFilename
+ *                                            createFileFolder 
  */
 public abstract class OOFileChooser extends OODialog
 {
@@ -24,9 +28,19 @@ public abstract class OOFileChooser extends OODialog
 	 * @param buttonText  有参构造函数的 按钮的标签名字 
 	 *  创建一个文件对话框，对话框一定要run一下。。。。。 并且一定要摧毁它
 	 */
-	public OOFileChooser(String title, int action, String buttonText)
+/*	public OOFileChooser(String title, int action, String buttonText)
 	{
 		setId(GTK.gtk_file_chooser_dialog_new(title, 0, action, buttonText));
+	}*/
+	public OOFileChooser(String title, OOFileAction action, String buttonText)
+	{
+		setId(GTK.gtk_file_chooser_dialog_new(title, 0, action.getValue(), buttonText));
+		//一个封装技巧。
+		if(action ==OOFileAction.SAVE)
+		{
+			setDoOverWrittenConfirmation(true);
+		}
+		
 	}
 	
 	/**
@@ -34,8 +48,7 @@ public abstract class OOFileChooser extends OODialog
 	 */
 	public OOFileChooser()
 	{
-		setId(GTK.gtk_file_chooser_dialog_new("打开文件", 0, GTK.GTK_FILE_CHOOSER_ACTION_OPEN,"打开"));
-		
+		this("打开文件", OOFileAction.OPEN, "打开");
 	}
 	/**
 	 *   设置文件打开窗口的多选
@@ -44,7 +57,31 @@ public abstract class OOFileChooser extends OODialog
 	{
 		GTK.gtk_file_chooser_set_select_multiple(this.getId(), true);
 	}
+	/**
+	 * 
+	 * @param do_overwrite_confirmation  在save模式下，保存时需要判断是否覆盖
+	 */
+	public void setDoOverWrittenConfirmation(boolean do_overwrite_confirmation)
+	{
+		GTK.gtk_file_chooser_set_do_overwrite_confirmation(this.getId(), do_overwrite_confirmation);
+	}
+	/**
+	 * 
+	 * @param text  设置当前选择的文件名为text
+	 */
+	public void setCurrentFilename(String text)
+	{
+		GTK.gtk_file_chooser_set_current_name(this.getId(), text);
+	}
 	
+	/**
+	 * 
+	 * @param create_folders  布尔值 用于判断是否创建。。。不清楚这边。
+	 */
+	public void createFileFolder(boolean create_folders)
+	{
+		GTK.gtk_file_chooser_set_create_folders(this.getId(), create_folders);
+	}
 	/**
 	 *   创建一个过滤器
 	 */
@@ -82,9 +119,15 @@ public abstract class OOFileChooser extends OODialog
 		return GTK.gtk_file_chooser_get_filenames(this.getId());
 	}
 	
+	public String  getFileName()
+	{
+		return GTK.gtk_file_chooser_get_filename(this.getId());
+	}
 	/**
 	 *   一个抽象方法 ，要求继承者去实现它
 	 *   多了一个
+	 *   
+	 *   V 可不可以用接口来实现，估计也是一样的下过
 	 */
 	public abstract void processResponse1();  //用于保存
 	public abstract String[] processResponse(); //用于打开

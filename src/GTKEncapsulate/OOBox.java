@@ -9,6 +9,8 @@ import com.rupeng.gtk4j.GTK;
  * @version   GTKEncapsulateOOBox V1.0   
  *                               V2.0  构造函数的一大改进，使用了boolean变量定义构造函数
  *                                     并添加了标注
+ *                               V3.0 删掉所有的int类型orientation的变量形参，避免造成构造函数的混乱，同时增加
+ *                                    一种构造函数，通过id直接创建一个box
  */
 public class OOBox extends OOContainer
 {
@@ -18,20 +20,20 @@ public class OOBox extends OOContainer
 	 * 
 	 * @param orientation  方向
 	 * @param spacing      间隔
-	 */
+	 *//*
 	public OOBox(int orientation,int spacing)
 	{
 		setId(GTK.gtk_box_new(orientation, spacing));
 	}
-	/**
+	*//**
 	 * 
 	 * @param orientation   方向的说明
-	 */
+	 *//*
 	public OOBox(int orientation)
 	{
 		this(orientation,0);
 		//setId(GTK.gtk_box_new(orientation,0));
-	}
+	}*/
 	/**
 	 *   无参构造函数的默认是水平布局
 	 */
@@ -63,12 +65,22 @@ public class OOBox extends OOContainer
 		//调用本类的构造函数
 		this(isHorizontal,0);
 	}
+	
+	/**
+	 * 
+	 * @param box  用于OODialog利用box编号 直接生成一个对象，因为ActionArea默认就是OOBox，所以可以这样
+	 *             之所以用protected，希望同包和同类中可以使用，不让外包使用。
+	 */
+	protected OOBox(int box)
+	{
+		setId(box);
+	}
 	/**
 	 * 
 	 * @param widget  待添加的控件标识符
 	 */
-	public void addWidget(int widget)
+	public void addWidget(OOWidget widget)
 	{
-		GTK.gtk_box_pack_start(this.getId(), widget, false, false, 0);
+		GTK.gtk_box_pack_start(this.getId(), widget.getId(), false, false, 0);
 	}
 }
