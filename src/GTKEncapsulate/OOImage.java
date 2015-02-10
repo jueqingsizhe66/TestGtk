@@ -9,6 +9,8 @@ import com.rupeng.gtk4j.GTK;
  * @author    叶昭良
  * @time      2015年2月6日上午1:15:05
  * @version   GTKEncapsulateOOImage V1.0
+ *                        V2.0  同过两个枚举类 OOStockImage OOStockSize 改写了
+ *                        setStockImage 方法的实现
  */
 public class OOImage extends OOWidget
 {
@@ -43,8 +45,9 @@ public class OOImage extends OOWidget
 	 * @param size   int GTK_ICON_SIZE_MENU  int GTK_ICON_SIZE_SMALL_TOOLBAR 
 	 *               int GTK_ICON_SIZE_BUTTON   int GTK_ICON_SIZE_DIALOG
 	 */
-	public void setStockImage(String stock_id,int size)
+	public void setStockImage(OOStockImage stock_id,OOStockSize size)
 	{
-		GTK.gtk_image_set_from_stock(this.getId(), stock_id, size);
+		GTK.gtk_image_set_from_stock(this.getId(), stock_id.getStockImage(), size.getOOStockSize());
+		
 	}
 }

@@ -126,9 +126,9 @@ public class TestMenuFileChooserAndToolbar
 		OOToolBar otbApple = new OOToolBar();
 		//必须设置上 否则太小了
 		otbApple.setWidgetSize(300, 20);
-		OOToolButton tbApple = otbApple.addTool("新建", GTK.GTK_STOCK_NEW, 0);
-		OOToolButton tbBanana =otbApple.addTool("打开", GTK.GTK_STOCK_OPEN, 1);
-		OOToolButton tbOrange =otbApple.addTool("保存", GTK.GTK_STOCK_SAVE, 2);
+		OOToolButton tbApple = otbApple.addTool("新建", OOStockImage.NEW, 0);
+		OOToolButton tbBanana =otbApple.addTool("打开", OOStockImage.OPEN, 1);
+		OOToolButton tbOrange =otbApple.addTool("保存", OOStockImage.SAVE, 2);
 		tbBanana.addClickedListener(new IGCallBack()
 		{
 			

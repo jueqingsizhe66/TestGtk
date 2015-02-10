@@ -9,6 +9,7 @@ import com.rupeng.gtk4j.GTK;
  * @author    叶昭良
  * @time      2015年2月5日下午2:34:00
  * @version   GTKEncapsulateOOToolBar V1.0
+ *                             V2.0 利用OOStockImage改进了addTool 方法
  */
 public class OOToolBar extends OOContainer
 {
@@ -18,8 +19,14 @@ public class OOToolBar extends OOContainer
 	{
 		setId(GTK.gtk_toolbar_new());
 	}
-	
-	public OOToolButton addTool(String toolName,String toolPic,int position)
+	/**
+	 * 
+	 * @param toolName
+	 * @param toolPic    OOStockImage枚举类的改进
+	 * @param position   tool在toolbar的位置
+	 * @return
+	 */
+	public OOToolButton addTool(String toolName,OOStockImage toolPic,int position)
 	{
 		tbApple[i] = new OOToolButton(toolName);
 		tbApple[i].show();

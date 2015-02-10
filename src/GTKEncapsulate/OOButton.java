@@ -10,6 +10,7 @@ import com.rupeng.gtk4j.GTK;
  * @time      2015年2月4日下午11:05:00
  * @version   GTKEncapsulateOOButton V1.0  只是两个构造函数
  *                                   V2.0  增加了按钮的图片 和按钮图片的位置控制
+ *                                   V3.0  为了满足OOCalendarButton的需求  增加了setLabel
  */
 public class OOButton extends OOBin
 {
@@ -49,5 +50,10 @@ public class OOButton extends OOBin
 	public void setImagePos(int position)
 	{
 		GTK.gtk_button_set_image_position(this.getId(), position);
+	}
+	
+	public void setLabel(String text)
+	{
+		GTK.gtk_button_set_label(this.getId(), text);
 	}
 }

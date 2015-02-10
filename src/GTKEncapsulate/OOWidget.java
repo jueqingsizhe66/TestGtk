@@ -9,6 +9,10 @@ package GTKEncapsulate;
  *                                        直接OOWidget ow = new OOWidget() ; ow.show()
  *                                        这完全是无意义的工作
  *                                  V4.0  注释掉MessageDialog的过程，这部分在新的OODialog已经有了
+ *                                  V5.0  为了使用的方便 在setId添加了 this.show() 基本上大多数控件是
+ *                                   	要show出来，这样设置减少了每次使用 show的次数
+ *                                   V6.0 发现不能show 否则OOdialog就一直显示出来了！！ 只好在对应的类
+ *                                         添加show
  */
 import com.rupeng.gtk4j.GTK;
 import com.rupeng.gtk4j.IGCallBack;
@@ -47,6 +51,7 @@ public abstract class OOWidget
 	protected  void setId(int Id)
 	{
 		this.Id = Id;
+		//this.show();
 	}
 	
 	//封装常用的widget功能 ，讨厌下划线

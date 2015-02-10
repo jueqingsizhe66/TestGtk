@@ -82,5 +82,6 @@ public class OOBox extends OOContainer
 	public void addWidget(OOWidget widget)
 	{
 		GTK.gtk_box_pack_start(this.getId(), widget.getId(), false, false, 0);
+		//GTK.gtk_box_pack_start(this.getId(), widget.getId(), true, true, 0); //可以填满！！不信你试试
 	}
 }
