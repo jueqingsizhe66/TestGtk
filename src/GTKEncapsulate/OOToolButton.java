@@ -9,6 +9,7 @@ import com.rupeng.gtk4j.IGCallBack;
  * @version   GTKEncapsulateOOToolButton V1.0  改进了OOToolBar. 是的OOToolButton对外包可视化
  *                    V2.0  改进了构造函数的方法  利用this函数进行重新实现
  *                          增加了setlabel方法  SetIConWidget方法  利用OOStockImage改进了SetStockImage方法
+ *                    V3.0  重大bug修复OOToolButton 居然没有setId
  *                         
  */
 public class OOToolButton extends OOContainer
@@ -21,8 +22,9 @@ public class OOToolButton extends OOContainer
 	public OOToolButton(OOWidget icon_widget,String label)
 	{
 		//如果为0 则工具栏控件没有图片
-		int icon_widgetID = icon_widget==null?0:icon_widget.getId();
-		GTK.gtk_tool_button_new(icon_widgetID, label);
+		int icon_widgetID = (icon_widget==null)?0:icon_widget.getId();
+		//GTK.gtk_tool_button_new(icon_widgetID, label) 已添加setId否则报错
+		setId(GTK.gtk_tool_button_new(icon_widgetID, label));
 	}
 	/*V1.0
 	 * public OOToolButton(String toolName)
@@ -31,6 +33,7 @@ public class OOToolButton extends OOContainer
 	}*/
 	public OOToolButton(String label)
 	{
+	
 		this(null,label);
 	}
 	/**

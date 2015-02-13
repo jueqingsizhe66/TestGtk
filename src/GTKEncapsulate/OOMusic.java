@@ -10,7 +10,7 @@ import com.rupeng.gtk4j.GTK;
  * @time      2015年2月10日上午12:11:41
  * @version   GTKEncapsulateOOMusic V1.0
  */
-public class OOMusic extends OOBin
+public class OOMusic extends OOBin implements AutoCloseable
 {
 
 	/**
@@ -43,4 +43,10 @@ public class OOMusic extends OOBin
 	{
 		GTK.mci_close(this.getId());
 	}
+/*	@Override
+	public void close() throws Exception
+	{
+		// TODO Auto-generated method stub
+		
+	}*/
 }

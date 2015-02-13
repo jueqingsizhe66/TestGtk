@@ -13,7 +13,7 @@ import com.rupeng.gtk4j.GTK;
  */
 public class OOToolBar extends OOContainer
 {
-	private static OOToolButton[] tbApple = new OOToolButton[10];
+	private static OOToolButton tbApple =null;
 	private static int i = 0;
 	public OOToolBar()
 	{
@@ -28,12 +28,12 @@ public class OOToolBar extends OOContainer
 	 */
 	public OOToolButton addTool(String toolName,OOStockImage toolPic,int position)
 	{
-		tbApple[i] = new OOToolButton(toolName);
-		tbApple[i].show();
-		tbApple[i].setStock(toolPic);
-		GTK.gtk_toolbar_insert(this.getId(), tbApple[i].getId(), position);
+		tbApple = new OOToolButton(toolName);
+		tbApple.show();
+		tbApple.setStock(toolPic);
+		GTK.gtk_toolbar_insert(this.getId(), tbApple.getId(), position);
 		i++;
-		return tbApple[i-1];
+		return tbApple;
 		
 	}
 	

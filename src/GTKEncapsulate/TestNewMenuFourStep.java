@@ -83,7 +83,7 @@ public class TestNewMenuFourStep
 					@Override
 					public void execute(int instance, int eventData, Object object)
 					{
-						youSavefile();
+						youSavefile(ootv);
 						
 					}
 				});
@@ -135,7 +135,7 @@ public class TestNewMenuFourStep
 					@Override
 					public void execute(int instance, int eventData, Object object)
 					{
-						youSavefile();
+						youSavefile(ootv);
 					}
 				});
 				otbApple.show();
@@ -146,7 +146,7 @@ public class TestNewMenuFourStep
 	
 	public static void youOpenfile(OOTextView ootv)
 	{
-		OpenFileNew ofApple = new OpenFileNew();
+		OOFileChooser ofApple = new OOFileChooser();
 		ofApple.setMultipleSelect();
 		ofApple.createFilter();
 		ofApple.nameFilter("文本文件");
@@ -154,15 +154,16 @@ public class TestNewMenuFourStep
 		ofApple.editFilter("*.java");
 		//把filter的操作放入打开对话框中
 		ofApple.finishFilter();
-		String[] filenames = ofApple.processResponse();
+		//使用内置的OOFileChooser的处理打开文件的方式
+		String[] filenames = ofApple.processOpen();
 		showAllFiles(filenames,  ootv);
 	}
-	public static void youSavefile()
+	public static void youSavefile(OOTextView ootv)
 	{
-		SaveFileNew ofBanana = new SaveFileNew("保存文件",GTK.GTK_FILE_CHOOSER_ACTION_SAVE,"保存");
+		OOFileChooser ofBanana = new OOFileChooser("保存文件",OOFileAction.SAVE,"保存");
 		//把filter的操作放入打开对话框中
-		
-		ofBanana.processResponse1();
+		//使用内置的OOFileChooser的处理保存文件的方式
+		ofBanana.processSave(ootv);
 	}
 	
 	public static void showAllFiles(String[] filenames,OOTextView otv)
@@ -203,7 +204,7 @@ public class TestNewMenuFourStep
 	}
 
 }
-//取和OpenFile不一样的类名防止重复
+/*//取和OpenFile不一样的类名防止重复
 class OpenFileNew extends OOFileChooser
 {
 
@@ -251,7 +252,7 @@ class SaveFileNew extends OOFileChooser
 	@Override
 	public void processResponse1()
 	{
-		// TODO Auto-generated method stub
+		
 		String[] filenames = null;
 		GTK.gtk_file_chooser_set_do_overwrite_confirmation(this.getId(), true);
 		// TODO Auto-generated method stub
@@ -272,3 +273,4 @@ class SaveFileNew extends OOFileChooser
 		
 	}
 }
+*/

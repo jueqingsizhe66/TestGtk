@@ -38,10 +38,10 @@ public abstract class OOWidget
 	 */
 	public int getId()
 	{
-		if(this.Id == 0)
+	/*	if(this.Id == 0)
 		{
 			throw new IllegalArgumentException();
-		}
+		}*/
 		return this.Id;
 	}
 	

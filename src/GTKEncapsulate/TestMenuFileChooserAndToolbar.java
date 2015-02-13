@@ -158,7 +158,7 @@ public class TestMenuFileChooserAndToolbar
 	
 	public static void youOpenfile(OOTextView ootv)
 	{
-		OpenFile ofApple = new OpenFile();
+		OOFileChooser ofApple = new OOFileChooser();
 		ofApple.setMultipleSelect();
 		ofApple.createFilter();
 		ofApple.nameFilter("文本文件");
@@ -166,15 +166,15 @@ public class TestMenuFileChooserAndToolbar
 		ofApple.editFilter("*.java");
 		//把filter的操作放入打开对话框中
 		ofApple.finishFilter();
-		String[] filenames = ofApple.processResponse();
+		String[] filenames = ofApple.processOpen();
 		showAllFiles(filenames,  ootv);
 	}
 	public static void youSavefile()
 	{
-		SaveFile ofBanana = new SaveFile("保存文件",GTK.GTK_FILE_CHOOSER_ACTION_SAVE,"保存");
+		OOFileChooser ofBanana = new OOFileChooser("保存文件",OOFileAction.SAVE,"保存");
 		//把filter的操作放入打开对话框中
 		
-		ofBanana.processResponse1();
+		ofBanana.processSave(ootv);
 	}
 	
 	public static void showAllFiles(String[] filenames,OOTextView otv)
@@ -216,7 +216,7 @@ public class TestMenuFileChooserAndToolbar
 }
 
 
-class OpenFile extends OOFileChooser
+/*class OpenFile extends OOFileChooser
 {
 
 	@Override
@@ -287,4 +287,4 @@ class SaveFile extends OOFileChooser
 		// TODO Auto-generated method stub
 		return null;
 	}
-}
+}*/

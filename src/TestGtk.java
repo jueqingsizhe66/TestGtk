@@ -2,6 +2,9 @@
  * @author 叶昭良
  *
  */
+import GTKEncapsulate.OOCalendarButton;
+import GTKEncapsulate.OOContainer;
+
 import com.rupeng.gtk4j.GTK;
 import com.rupeng.gtk4j.IGCallBack;
 
@@ -43,7 +46,14 @@ public class TestGtk
         int box = GTK.gtk_box_new(GTK.GTK_ORIENTATION_HORIZONTAL,0);
         // 在gtk_container_add只能盛放一个容器或者控件
         GTK.gtk_container_add(window,box);
+        
+        int note = GTK.gtk_notebook_new();
+        GTK.gtk_widget_show(note);
+        /*OOCalendarButton ocb = new OOCalendarButton("click");
+        ocb.show();*/
+       // GTK.gtk_notebook_append_page(note, 0, 1);
         //显示box
+        GTK.gtk_box_pack_start(box, note, false, false, 0);
         GTK.gtk_widget_show(box);
         //GTK的主循环程序 gtk_main();
         GTK.gtk_main();

@@ -1,9 +1,6 @@
-/**
- * 
- */
 package TestGTKEncapsulate;
 
-import javax.xml.crypto.dsig.keyinfo.KeyValue;
+
 
 import com.rupeng.gtk4j.GTK;
 import com.rupeng.gtk4j.IGCallBack;
@@ -92,7 +89,7 @@ public class TestXiaoBingWindow extends OOWindow
 						otvApple.insertTextAtEnd("Little Bing Said:"+"去哪里玩？\n");
 					}else if(text.contains("select"))
 					{
-						OpenFile ofApple = new OpenFile();
+						OOFileChooser ofApple = new OOFileChooser();
 						ofApple.setMultipleSelect();
 						ofApple.createFilter();
 						ofApple.nameFilter("音乐文件");
@@ -100,15 +97,46 @@ public class TestXiaoBingWindow extends OOWindow
 						ofApple.editFilter("*.wav");
 						//把filter的操作放入打开对话框中
 						ofApple.finishFilter();
-						String[] filenames = ofApple.processResponse();
+						String[] filenames = ofApple.processOpen();
 						//在src文件夹下
 						om = new OOMusic(filenames[0]);
-						om.playOnce();
-					}else if(text.contains("sing"))
+						om.playRepeat();
+					}else if(text.contains("breath"))
 					{
 						//在src文件夹下
+						if(null != om)
+						{
+							om.close();
+						}
 						om = new OOMusic("breathless.mp3",false);
-						om.playOnce();
+						om.playRepeat();
+					}else if(text.contains("surrender"))
+					{
+						//在src文件夹下
+						if(null != om)
+						{
+							om.close();
+						}
+						om = new OOMusic("ISurrender.mp3",false);
+						om.playRepeat();
+					}else if(text.contains("love"))
+					{
+						//在src文件夹下
+						if(null != om)
+						{
+							om.close();
+						}
+						om = new OOMusic("我如此爱你.mp3",false);
+						om.playRepeat();
+					}else if(text.contains("Some"))
+					{
+						//在src文件夹下
+						if(null != om)
+						{
+							om.close();
+						}
+						om = new OOMusic("Somewhere.mp3",false);
+						om.playRepeat();
 					}else if(text.contains("pause"))
 					{
 						//在src文件夹下
@@ -144,10 +172,10 @@ public class TestXiaoBingWindow extends OOWindow
 						otvApple.insertTextAtEnd("小兵说：没听见，再说一遍\n");
 					}
 				}
-//				System.out.println(OOKeycode.parseOOKeycode(keycode).getKeyName());
+			//				System.out.println(OOKeycode.parseOOKeycode(keycode).getKeyName());
 			}
-		});
-		/*GTK.g_signal_connect(oeApple.getId(), "key-press-event", new IGCallBack()
+			});
+/*GTK.g_signal_connect(oeApple.getId(), "key-press-event", new IGCallBack()
 		{
 			
 			@Override
@@ -171,7 +199,7 @@ public class TestXiaoBingWindow extends OOWindow
 				//OOMessageDialog.showInfo("当前输入的字符"+enterCharacter+"的ascii码为:"+keycode, "学习ASCII码");
 			}
 		}, null);*/
-	}
+}
 	public static void main(String[] args)
 	{
 		// TODO Auto-generated method stub
@@ -180,38 +208,6 @@ public class TestXiaoBingWindow extends OOWindow
 		txbw.setExitAfterDestroy(true);
 		txbw.show();
 		GTK.gtk_main();
-	}
-	class OpenFile extends OOFileChooser
-	{
-
-		@Override
-		public  String[] processResponse()
-		{
-			String[] filenames = null;
-			// TODO Auto-generated method stub
-			int ret = this.run().getValue();
-			if(ret == GTK.GTK_RESPONSE_OK) 
-			{
-				filenames = GTK.gtk_file_chooser_get_filenames(this.getId());
-				for(int i = 0 ; i< filenames.length ; i++)
-				{
-					
-					System.out.println("选中文件名"+i+": "+filenames[i]);
-				}
-				GTK.gtk_widget_destroy(this.getId()); //必须需要！！否则报错
-			}else
-			{
-				GTK.gtk_widget_destroy(this.getId());
-			}
-			return filenames;
-		}
-
-		@Override
-		public void processResponse1()
-		{
-			// TODO Auto-generated method stub
-			
-		}		
 	}
 }
 

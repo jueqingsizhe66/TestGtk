@@ -1,6 +1,3 @@
-/**
- * 
- */
 package GTKEncapsulate;
 
 import com.rupeng.gtk4j.GTK;

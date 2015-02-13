@@ -4,6 +4,8 @@ package TestGTKEncapsulate;
 
 
 
+import java.io.IOException;
+
 import com.rupeng.gtk4j.GTK;
 import com.rupeng.gtk4j.IGSourceFunc;
 
@@ -20,9 +22,9 @@ public class TestGirlGift extends OOWindow
 	/**
 	 * @param args
 	 */
-	private OOImage oim ;
-	private OOTextView otv;
-	private OOMusic om ;
+	private OOImage oim =null;
+	private OOTextView otv =null;;
+	//private OOMusic om =null ;
 	public TestGirlGift() 
 	{
 		OOBox ob =new OOBox(false);
@@ -36,7 +38,7 @@ public class TestGirlGift extends OOWindow
 		otv.setType();
 		OOScrollBar osb = new OOScrollBar();
 		osb.show();
-		osb.setWidgetSize(200, 220);
+		osb.setWidgetSize(300, 300);
 		osb.add(otv);
 		ob.addWidget(osb);
 		this.add(ob);
@@ -45,7 +47,7 @@ public class TestGirlGift extends OOWindow
 		// +号之后都会出现bug
 		final String Lovewords = "欣然:\r\n谢谢你给我的所有关怀和理解，尤其是那些孤立无助的时刻你温暖的陪伴，它让我始终强大坚定!\r\n"
 	            +"我要让你成为世界上最幸福的女人,不是因为这一生积累的名望,地位与财富,而仅仅因为我默默恒久的爱!\r\n"
-	            +"今天,说出这些话语是那么艰难却又那么快乐,这都是我这么长时间以来埋在心底的话语!这一切只是因为下面我要唱给"
+	            +"今天,说出这些话语是那么艰难却又那N么快乐,这都是我这么长时间以来埋在心底的话语!这一切只是因为下面我要唱给"
 	            +"你听的这首歌的名字:我如此爱你!\r\n落款人：叶昭良 ";
 		love.append(Lovewords);
 	//这个过程是慢慢地，但是一直持续的在运行
@@ -62,8 +64,14 @@ public class TestGirlGift extends OOWindow
 				if(otv.getText().length() == love.length()-1)
 				{
 					//om.close();
-					om = new OOMusic("我如此爱你.mp3",true);
-					om.playRepeat();
+					try
+					(
+							OOMusic om = new OOMusic("我如此爱你.mp3",true);
+					)
+					{
+							om.playRepeat();
+					}
+				
 					return true;
 				}else if(otv.getText().length() == love.length())
 				{
@@ -71,7 +79,6 @@ public class TestGirlGift extends OOWindow
 				}
 				else
 				{ 
-					
 					//System.out.println("2");
 					return true;
 				}
