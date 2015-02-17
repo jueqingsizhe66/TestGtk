@@ -39,60 +39,60 @@ public class OOInputDialog extends OODialog
 	public OOInputDialog()
 	{
 		//虽然contentarea只可以容纳一个控件，但是我可以利用box grid，类似于window的作用。依然丰盛
-				oc = this.createContentArea();
-				OOBox obTemp = new OOBox(true);
-				obTemp.show();
-				oc.add(obTemp);
+			oc = this.createContentArea();
+			OOBox obTemp = new OOBox(true);
+			obTemp.show();
+			oc.add(obTemp);
+			
+			olInput = new OOLabel("请输入：");
+			olInput.show();
+			obTemp.addWidget(olInput);
+			entryApple = new OOEntry();
+			entryApple.show();
+			obTemp.addWidget(entryApple);
+	
+			
+			obOk = new OOButton("确定");
+			obOk.show();
+			obOk.addClickedListener(new IGCallBack()
+			{
 				
-				olInput = new OOLabel("请输入：");
-				olInput.show();
-				obTemp.addWidget(olInput);
-				entryApple = new OOEntry();
-				entryApple.show();
-				obTemp.addWidget(entryApple);
-
-				
-				obOk = new OOButton("确定");
-				obOk.show();
-				obOk.addClickedListener(new IGCallBack()
+				@Override
+				public void execute(int instance, int eventData, Object object)
 				{
-					
-					@Override
-					public void execute(int instance, int eventData, Object object)
-					{
-						// TODO Auto-generated method stub
-						// 为什么这边需要 response(GtkResponseType.OK);
-						//  run过程默认是执行的  再说了response根本不应该在这边调用
-						response(OOResponseType.OK);
-						/*String text = getValue();
-						System.out.println(text);
-						oid.destroy();
-						OOMessageDialog.showInfo(text, "你输入的是");*/
-						//GTK.gtk_widget_destroy(oid.getId()); //可以放在messagebox之前或者之后
-						//杨老师把它防砸meesagebox之前
-					}
-				});
-				obCancel = new OOButton("取消");
-				obCancel.show();
-				obCancel.addClickedListener(new IGCallBack()
-				{
-					
-					@Override
-					public void execute(int instance, int eventData, Object object)
-					{
-						// TODO Auto-generated method stub
-						// 为什么这边需要 response(GtkResponseType.OK);
-						response(OOResponseType.CANCEL);
-						//oid.destroy();
-						//GTK.gtk_widget_destroy(oid.getId());
-						//GTK.gtk_main_quit();
-					}
-				});
-				ob = this.createActionArea();
+					// TODO Auto-generated method stub
+					// 为什么这边需要 response(GtkResponseType.OK);
+					//  run过程默认是执行的  再说了response根本不应该在这边调用
+					response(OOResponseType.OK);
+					/*String text = getValue();
+					System.out.println(text);
+					oid.destroy();
+					OOMessageDialog.showInfo(text, "你输入的是");*/
+					//GTK.gtk_widget_destroy(oid.getId()); //可以放在messagebox之前或者之后
+					//杨老师把它防砸meesagebox之前
+				}
+			});
+			obCancel = new OOButton("取消");
+			obCancel.show();
+			obCancel.addClickedListener(new IGCallBack()
+			{
 				
-
-				ob.addWidget(obOk);
-				ob.addWidget(obCancel);
+				@Override
+				public void execute(int instance, int eventData, Object object)
+				{
+					// TODO Auto-generated method stub
+					// 为什么这边需要 response(GtkResponseType.OK);
+					response(OOResponseType.CANCEL);
+					//oid.destroy();
+					//GTK.gtk_widget_destroy(oid.getId());
+					//GTK.gtk_main_quit();
+				}
+			});
+			ob = this.createActionArea();
+			
+	
+			ob.addWidget(obOk);
+			ob.addWidget(obCancel);
 				
 
 	}

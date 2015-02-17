@@ -13,19 +13,19 @@ import com.rupeng.gtk4j.IGCallBack;
 /**
  * @author    叶昭良
  * @time      2015年2月5日下午4:38:57
- * @version   GTKEncapsulateOOFileChooser V1.0 把类标记为abstract，这样的类无法被直接实例化（new）
- *                                     ，这就叫抽象类。
- *                                     V2.0   修改了run方法
- *                                     V3.0   抽象方法的返回值从void 该到了String[]
- *                                     v4.0   修改OOFileChooser继承类为来自OODailog
- *                                            并把public int run()方法提到OODialog中
- *                                     V5.0   利用OOFileAction枚举类 重新编写了OOFIleChooser
- *                                     V6.0   创建了setDoOverWrittenConfirmatio函数，并在封装构造函数中
- *                                            运用了一个判断技巧，增加了 getFileName()  setCurrentFilename
- *                                            createFileFolder 
- *                                     V7.0   从抽象类转变到非抽象类
- *                                            增加了一个文件接口 OOFileChooserInterface 供用户使用
- *                                            增加了打开文件和保存文件的默认处理方式
+ * @version   GTKEncapsulateOOFileChooser V1.0 把类标记为abstract，
+ * 				这样的类无法被直接实例化（new），这就叫抽象类。
+ *  V2.0   修改了run方法
+ *  V3.0   抽象方法的返回值从void 该到了String[]
+ *  v4.0   修改OOFileChooser继承类为来自OODailog
+ *         并把public int run()方法提到OODialog中
+ *  V5.0   利用OOFileAction枚举类 重新编写了OOFIleChooser
+ *  V6.0   创建了setDoOverWrittenConfirmatio函数，并在封装构造函数中
+ *         运用了一个判断技巧，增加了 getFileName()  setCurrentFilename
+ *         createFileFolder 
+ *  V7.0   从抽象类转变到非抽象类
+ *         增加了一个文件接口 OOFileChooserInterface 供用户使用
+ *         增加了打开文件和保存文件的默认处理方式
  */
 public  class OOFileChooser extends OODialog
 {
@@ -141,7 +141,8 @@ public  class OOFileChooser extends OODialog
 	 */
 	/**
 	 * 
-	 * @param ofci  开放了一个OOFileChooserInterface接口，用于处理打开文件和保存文件，需要进行的额外操作
+	 * @param ofci  开放了一个OOFileChooserInterface接口，
+	 *              用于处理打开文件和保存文件，需要进行的额外操作
 	 */
 	public void processResponse(final OOFileChooserInterface ofci)
 	{
@@ -176,7 +177,8 @@ public  class OOFileChooser extends OODialog
 		return filenames;
 	}
 	/**
-	 *   默认处理保存对话框的方式   基本上默认是大部分采用的方式，保存文件的打开文件流有OOFileChooser去做
+	 *   默认处理保存对话框的方式   基本上默认是大部分采用的方式，
+	 *   保存文件的打开文件流有OOFileChooser去做
 	 *   
 	 *   暂时直接接受textview的文本信息，类似的可以使用OOTreeview
 	 *   
@@ -221,8 +223,11 @@ public  class OOFileChooser extends OODialog
 			System.out.println(temp);
 			
 			/*int textBuffer =  GTK.gtk_text_view_get_buffer(textview);
-			int textIter = GTK.gtk_text_iter_new();  //这是一个空的iter，需要用textBuffer进行赋值
-			GTK.gtk_text_buffer_get_end_iter(textBuffer, textIter);// 或者textview的textBuffer的末尾！
+			//这是一个空的iter，需要用textBuffer进行赋值
+			int textIter = GTK.gtk_text_iter_new();  
+			
+			GTK.gtk_text_buffer_get_end_iter(textBuffer, textIter);
+			// 或者textview的textBuffer的末尾！
 			String tempText = GTK.gtk_text_buffer_get_text(textBuffer);*/
 			
 			//while(tempText != null) // -1读取完毕

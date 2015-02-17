@@ -110,6 +110,24 @@ public class TestXiaoBingWindow extends OOWindow
 						}
 						om = new OOMusic("breathless.mp3",false);
 						om.playRepeat();
+					}else if(text.contains("TwoDay"))
+					{
+						//在src文件夹下
+						if(null != om)
+						{
+							om.close();
+						}
+						om = new OOMusic("两天.mp3",false);
+						om.playRepeat();
+					}else if(text.contains("wait"))
+					{
+						//在src文件夹下
+						if(null != om)
+						{
+							om.close();
+						}
+						om = new OOMusic("RightHereWaiting.mp3",false);
+						om.playRepeat();
 					}else if(text.contains("surrender"))
 					{
 						//在src文件夹下
