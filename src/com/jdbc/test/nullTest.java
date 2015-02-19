@@ -9,6 +9,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+//import javax.sql.rowset.CachedRowSet;
+
+//import com.mysql.jdbc.CachedResultSetMetaData;
+
+
 /**
  * @author    叶昭良
  * @time      2015年2月17日下午10:14:24
@@ -22,6 +27,9 @@ public class nullTest
 	 */
 	public static void main(String[] args)
 	{
+		
+		
+		//CachedRowSet crs = new
 		// TODO Auto-generated method stub
 		try
 		{
