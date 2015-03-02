@@ -1,5 +1,7 @@
 /**
- * 
+ *  批注！ 这边不是ｅｘｔｅｎｄｓ　而是直接使用enum进行定义了！一直有些困惑现在解决了
+ *  
+ *  还要注意enum类似于class  在前面可以添加public  进行反问的修饰
  */
 package GTKEncapsulate;
 

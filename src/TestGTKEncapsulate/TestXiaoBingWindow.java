@@ -1,5 +1,8 @@
 package TestGTKEncapsulate;
-
+/**
+ *  回想起OOKeyCode用法！  还有注意public enum
+ *  的用法！
+ */
 
 
 import com.rupeng.gtk4j.GTK;
