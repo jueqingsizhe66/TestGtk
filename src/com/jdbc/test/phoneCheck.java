@@ -6,6 +6,7 @@ package com.jdbc.test;
 /**
  * @author    叶昭良
  * @time      2015年2月18日下午3:49:22
+ *                        下午5:00左右
  * @version   com.jdbc.testphoneCheck V1.0
  */
 import java.io.*;
@@ -88,11 +89,13 @@ public class phoneCheck
 				ps.addBatch();
 
 				i++;
+				//每个2000步之后进行提交一次 到数据库
 				if(i%2000==0)
 				{
 					ps.executeBatch();
 				}
 			}
+			//提交 最后的几百步
 			ps.executeBatch();
 			conn.commit();
 			long endMs = System.currentTimeMillis();
