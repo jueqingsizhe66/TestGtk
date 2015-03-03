@@ -21,28 +21,36 @@ public class TestBeanUtils
 	public static void main(String[] args)
 	{
 		// TODO Auto-generated method stub
-		 Student userInfo=new Student();
+		 Student employee=new Student();
          try {
-            BeanUtils.setProperty(userInfo, "Id", "0001");
+        	
+             String firstName = (String)
+               PropertyUtils.getSimpleProperty(employee, "Id");
+             String lastName = (String)
+               PropertyUtils.getSimpleProperty(employee, "Age");
+             
+             PropertyUtils.setSimpleProperty(employee, "Id", "001");
+             PropertyUtils.setSimpleProperty(employee, "lastName", 233);
+        /*	 PropertyUtils.setSimpleProperty(userInfo, "Id", "0001");
             
             System.out.println("set userName:"+userInfo.getId());
             
-            System.out.println("get userName:"+BeanUtils.getProperty(userInfo, "Id"));
+            System.out.println("get userName:"+PropertyUtils.getSimpleProperty(userInfo, "Id"));
             
-            BeanUtils.setProperty(userInfo, "Age", 18);
+            PropertyUtils.setSimpleProperty(userInfo, "Age", 18);
             System.out.println("set age:"+userInfo.getAge());
             
-            System.out.println("get age:"+BeanUtils.getProperty(userInfo, "Age"));
+            System.out.println("get age:"+PropertyUtils.getSimpleProperty(userInfo, "Age"));
              
-            System.out.println("get userName type:"+BeanUtils.getProperty(userInfo, "Id").getClass().getName());
-            System.out.println("get age type:"+BeanUtils.getProperty(userInfo, "Age").getClass().getName());
+            System.out.println("get userName type:"+PropertyUtils.getSimpleProperty(userInfo, "Id").getClass().getName());
+            System.out.println("get age type:"+PropertyUtils.getSimpleProperty(userInfo, "Age").getClass().getName());
             
-            PropertyUtils.setProperty(userInfo, "Age", 8);
-            System.out.println(PropertyUtils.getProperty(userInfo, "Age"));
+            PropertyUtils.setSimpleProperty(userInfo, "Age", 8);
+            System.out.println(PropertyUtils.getSimpleProperty(userInfo, "Age"));
             
-            System.out.println(PropertyUtils.getProperty(userInfo, "Age").getClass().getName());
+            System.out.println(PropertyUtils.getSimpleProperty(userInfo, "Age").getClass().getName());
                   
-            PropertyUtils.setProperty(userInfo, "Age", "8");   
+            PropertyUtils.setSimpleProperty(userInfo, "Age", "8"); */  
         } 
          catch (IllegalAccessException e) {
             e.printStackTrace();

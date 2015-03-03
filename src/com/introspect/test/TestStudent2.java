@@ -21,9 +21,9 @@ public class TestStudent2
 	{
 		// TODO Auto-generated method stub
 		Map<String,Object> studentInfo = new HashMap<String,Object>();
-		studentInfo.put("Id", "001");
-		studentInfo.put("Name","wangyin");
-		studentInfo.put("Age",3);
+		studentInfo.put("id", "001");
+		studentInfo.put("name","wangyin");
+		studentInfo.put("age",3);
 		
 		//创建student对象
 		Student s1 = new Student();
@@ -45,9 +45,15 @@ public class TestStudent2
 	
 	public static void packagingStudent(Student stu,Map<String,Object> map)
 	{
-		stu.setId((String)map.get("Id"));
+		/*stu.setId((String)map.get("Id"));
 		stu.setName((String)map.get("Name"));
-		stu.setAge((int)map.get("Age"));
+		stu.setAge((int)map.get("Age"));*/
+		
+		//而且 字段 使用大写和小写都可以！！ 但是使用BeansInfo必须是小写的
+		//字段
+		stu.setId((String)map.get("id"));
+		stu.setName((String)map.get("name"));
+		stu.setAge((int)map.get("age"));
 	}
 	
 	//使用反射把数据封装到对象中
@@ -93,6 +99,10 @@ public class TestStudent2
 			String fieldName = temp.getName();
 			//通过属性的javabeans方法获得对应的set方法
 			//Class c1 = temp.getPropertyType();
+			//temp.getPropertyType()
+			
+			//age  调试结果   fieldName是age！ 也就是这边肯定是有问题的
+			System.out.println(fieldName);
 			Method methodSet = temp.getWriteMethod();
 			if(methodSet !=null)
 			{

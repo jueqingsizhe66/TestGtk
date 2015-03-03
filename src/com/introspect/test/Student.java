@@ -11,8 +11,12 @@ package com.introspect.test;
 //据说下面是符合javaBeans设计思想的普通类
 public class Student
 {
-	//字段私有化
-	private String Id;
+	//字段私有化  ，使用BeansInfo必须是用Id  Name  Age而不是Id Name Age
+	/*private String Id;
+	private String Name;
+	private int Age;*/
+	
+	private String id;
 	private String Name;
 	private int Age;
 	
@@ -25,36 +29,36 @@ public class Student
 	public String toString()
 	{
 		StringBuilder studentInfo = new StringBuilder();
-		studentInfo.append("学生的Id：").append(Id).append(",姓名:").append(Name).append(
+		studentInfo.append("学生的Id：").append(id).append(",姓名:").append(Name).append(
 				",年龄是:").append(Age);
 		return studentInfo.toString();
 	}	
 	public String getId()
 	{
-		return Id;
+		return id;
 	}
-	public void setId(String id)
+	public void setId(String Id)
 	{
-		Id = id;
+		this.id = Id;
 	}
 	public String getName()
 	{
 		return Name;
 	}
-	public void setName(String name)
+	public void setName(String Name)
 	{
-		Name = name;
+		this.Name = Name;
 	}
 	public int getAge()
 	{
 		return Age;
 	}
-	public void setAge(int age)
+	public void setAge(int Age)
 	{
-		if(age < 0)
+		if(Age < 0)
 		{
-			age = 0;
+			Age = 0;
 		}
-		Age = age;
+		this.Age = Age;
 	}
 }
