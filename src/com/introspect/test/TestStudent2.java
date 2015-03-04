@@ -86,6 +86,7 @@ public class TestStudent2
 		}
 	}
 	
+	//java内省简化 了反射的字段的拼接
 	public static void packagingStudentUsingInstropector(Object obj,
 			Map<String,Object> map) throws Exception
 	{
@@ -104,7 +105,9 @@ public class TestStudent2
 			//age  调试结果   fieldName是age！ 也就是这边肯定是有问题的
 			System.out.println(fieldName);
 			Method methodSet = temp.getWriteMethod();
-			if(methodSet !=null)
+			if(methodSet !=null) //如果缺少if判断  就会报错！！
+					//因为所有的类都包含 class字段！ 这是容易错误的点！
+					//一定得注意这边
 			{
 				methodSet.invoke(obj, map.get(fieldName));
 			}
