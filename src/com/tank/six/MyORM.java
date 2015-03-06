@@ -17,7 +17,7 @@
  *             表名字和类的名字一样
  */
 
-package com.introspect.test;
+package com.tank.six;
 import com.jdbc.test.*;
 
 import java.beans.BeanInfo;
