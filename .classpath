@@ -2,7 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
-	<classpathentry kind="lib" path="C:/Users/XinRan/Desktop/如鹏java培训/gtk4j-1.0.0.jar"/>
 	<classpathentry kind="lib" path="C:/Program Files/MySQL/MySQL Connector J/mysql-connector-java-5.1.34-bin.jar" sourcepath="C:/Program Files/MySQL/MySQL Connector J/src.zip"/>
 	<classpathentry kind="lib" path="E:/Commons-IOs/我常用的几个Apache的库/poi-3.11/poi-3.11-20141221.jar" sourcepath="E:/Commons-IOs/我常用的几个Apache的库/poi-src-3.11-20141221.zip"/>
 	<classpathentry kind="lib" path="E:/Commons-IOs/我常用的几个Apache的库/poi-3.11/poi-examples-3.11-20141221.jar" sourcepath="E:/Commons-IOs/我常用的几个Apache的库/poi-src-3.11-20141221.zip"/>
@@ -16,5 +15,6 @@
 	<classpathentry kind="lib" path="E:/Commons-IOs/我常用的几个Apache的库/commons-logging-1.2-bin/commons-logging-1.2/commons-logging-1.2.jar" sourcepath="E:/Commons-IOs/我常用的几个Apache的库/commons-logging-1.2-src.zip"/>
 	<classpathentry kind="lib" path="E:/Commons-IOs/我常用的几个Apache的库/commons-collections4-4.0/commons-collections4-4.0.jar" sourcepath="E:/Commons-IOs/我常用的几个Apache的库/commons-collections4-4.0/commons-collections4-4.0-sources.jar"/>
 	<classpathentry kind="lib" path="E:/Commons-IOs/我常用的几个Apache的库/commons-collections4-4.0/commons-collections4-4.0-tests.jar" sourcepath="E:/Commons-IOs/我常用的几个Apache的库/commons-collections4-4.0/commons-collections4-4.0-test-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/XinRan/Desktop/如鹏java培训/java的包集/gtk4j-1.0.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

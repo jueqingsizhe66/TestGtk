@@ -42,7 +42,6 @@ public class Restaurant
 	//定义一个init函数 用于在构造函数内部 调用，并初始化菜单！准备开张 开店铺
 	public Restaurant()
 	{
-		init();
 	}
 	public void init()
 	{
