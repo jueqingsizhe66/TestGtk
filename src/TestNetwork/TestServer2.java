@@ -45,7 +45,7 @@ public class TestServer2
 			while(true)
 			{
 				String apple = dis.readUTF();
-				System.out.println("对方："+dis.readUTF());
+				System.out.println("客户端："+dis.readUTF());
 				if(apple.equals("bye"))
 				{
 					break;

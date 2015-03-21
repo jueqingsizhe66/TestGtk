@@ -5,20 +5,20 @@ package com.introspect.test;
 
 /**
  * @author    叶昭良
- * @time      2015年3月3日下午6:09:39
+ * @time      2015年3月21日下午2:10:39
  * @version   com.introspect.testStudent V1.0
  */
 //据说下面是符合javaBeans设计思想的普通类
 public class Student
 {
-	//字段私有化  ，使用BeansInfo必须是用Id  Name  Age而不是Id Name Age
-	/*private String Id;
-	private String Name;
-	private int Age;*/
+	//字段私有化  ，使用BeansInfo必须是用id  name  num而不是id name num
+	/*private String id;
+	private String name;
+	private int num;*/
 	
-	private String id;
-	private String Name;
-	private int Age;
+	private int id;
+	private String name;
+	private String num;
 	
 	//提供一个无参的构造函数
 	public Student()
@@ -29,36 +29,33 @@ public class Student
 	public String toString()
 	{
 		StringBuilder studentInfo = new StringBuilder();
-		studentInfo.append("学生的Id：").append(id).append(",姓名:").append(Name).append(
-				",年龄是:").append(Age);
+		studentInfo.append("学生的id：").append(id).append(",姓名:").append(name).append(
+				",学号是:").append(num);
 		return studentInfo.toString();
 	}	
-	public String getId()
+	public int getid()
 	{
 		return id;
 	}
-	public void setId(String Id)
+	public void setid(int id)
 	{
-		this.id = Id;
+		this.id = id;
 	}
-	public String getName()
+	public String getname()
 	{
-		return Name;
+		return name;
 	}
-	public void setName(String Name)
+	public void setname(String name)
 	{
-		this.Name = Name;
+		this.name = name;
 	}
-	public int getAge()
+	public String getnum()
 	{
-		return Age;
+		return num;
 	}
-	public void setAge(int Age)
+	public void setnum(String num)
 	{
-		if(Age < 0)
-		{
-			Age = 0;
-		}
-		this.Age = Age;
+		
+		this.num = num;
 	}
 }

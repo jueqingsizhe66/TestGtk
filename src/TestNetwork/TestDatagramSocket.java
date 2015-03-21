@@ -42,10 +42,10 @@ public class TestDatagramSocket
 		{
 			ds = new DatagramSocket(5566);
 			byte[] apple = new byte[1025];
-			for(int i =0 ; i < 20; i++)
+			/*for(int i =0 ; i < 20; i++)
 			{
 				apple[i] = (byte) ((byte)'a'+i);
-			}
+			}*/
 			dp = new DatagramPacket(apple, apple.length);
 			while(true)
 			{

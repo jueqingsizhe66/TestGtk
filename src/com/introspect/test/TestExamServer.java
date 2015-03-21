@@ -1,19 +1,32 @@
 /**
  * 解释：
  */
-package TestNetwork;
-import java.net.*;
-import java.io.*;
+package com.introspect.test;
 
-// some error   swing : controler
-import javax.swing.*;
+import java.awt.BorderLayout;
+import java.awt.Button;
+import java.awt.Font;
+import java.awt.Frame;
+import java.awt.Panel;
+import java.awt.TextArea;
+import java.awt.TextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.net.ServerSocket;
+import java.net.Socket;
 
-import java.awt.*;
-import java.awt.event.*;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+
+
 /**
  * @author    叶昭良
- * @time      2015年3月19日下午3:22:27
- * @version   TestNetworkTestClient4 V1.0
+ * @time      2015年3月21日下午2:56:04
+ * @version   com.introspect.testTestExamServer V1.0
  * 功能： 
                 步骤：
  * 注意：
@@ -21,7 +34,7 @@ import java.awt.event.*;
                 思考：
  * 回顾：
  */
-public class TestClient4
+public class TestExamServer
 {
 
 	/**
@@ -34,6 +47,7 @@ public class TestClient4
 	 */
 	public static void main(String[] args)
 	{
+		// TODO Auto-generated method stub
 		// TODO Auto-generated method stub
 		Font font = new Font("Dialog", Font.PLAIN, 12); //一下是改变默认的组建上显示的字体，这样更加美观一些
 		UIManager.put("MenuBar.font", font);
@@ -59,15 +73,18 @@ public class TestClient4
 		UIManager.put("ToggleButton.font", font);
 		UIManager.put("Dialog.font", font);
 		UIManager.put("Panel.font", font);
-		 new TCPClient().launch();
+		 new TCPServer().launch();
 	}
 
 }
-class TCPClient
+
+
+class TCPServer
 {
         // class variables
         // class variables
         // connect
+         private ServerSocket ss = null;
          private Socket s = null;
          // data flow
          private DataOutputStream dos = null;
@@ -83,19 +100,19 @@ class TCPClient
          {
              createUI();
              connect();
-             new ClientRead().start();
-             new ClientWrite().start();
+             new ServerRead().start();
+             new ServerWrite().start();
          }
         // construct member
         /*
-        public TCPClient()
+        public TCPServer()
         {
 
         }
         */
         public void createUI()
         {
-            Frame f = new Frame("客户端");
+            Frame f = new Frame("服务器");
             ta = new TextArea();
             tf = new TextField();
             Panel p = new Panel(new BorderLayout());
@@ -120,7 +137,8 @@ class TCPClient
         public void connect()
         {
             try{
-                s = new Socket("127.0.0.1",5599);
+                ss = new ServerSocket(5599);
+                s = ss.accept();
                 dis = new DataInputStream(s.getInputStream());
                 dos = new DataOutputStream(s.getOutputStream());
             }catch(Exception e)
@@ -133,6 +151,7 @@ class TCPClient
             try{
                 dis.close();
                 dos.close();
+                ss.close();
                 s.close();
             }catch(Exception e)
             {
@@ -140,7 +159,7 @@ class TCPClient
             }
         }
 
-        class ClientRead extends Thread
+        class ServerRead extends Thread
         {
             public void run()
             {
@@ -148,12 +167,23 @@ class TCPClient
                 {
                    try{
                         String str = dis.readUTF();
-                   //     System.out.println("对方说:"+str);
-                        ta.append("服务器说:"+str+"\n");
+              //          System.out.println("对方说:"+str);
+                        ta.append("客户端说："+str+"\n");
                         if(str.equalsIgnoreCase("再见"))
                         {
                             close();
                             System.exit(0);
+                        }
+                        if(str.matches(".*\\|.*"))
+                        {
+                        	System.out.println("的确存在");
+                        	String[] piles = str.split("[|]");
+                        	Student s1 = (Student)MyORM.select(Student.class, piles[1]);
+                        	ta.append("str的姓名是:"+s1.getname());
+                        }
+                        if(str.matches("2"))
+                        {
+                        	ta.append("服务器对客户端说：总共有"+MyORM.select(Student.class)+"个学生\n"); 
                         }
                    }catch(Exception e)
                    {
@@ -164,15 +194,15 @@ class TCPClient
                 }
             }
         }
-        class ClientWrite extends Thread
+        class ServerWrite extends Thread
         {
             public void run()
             {
-                tf.addActionListener(new TCPClientListener());
-                bn.addActionListener(new TCPClientListener());
+                tf.addActionListener(new TCPServerListener());
+                bn.addActionListener(new TCPServerListener());
             }
         }
-        class TCPClientListener implements ActionListener
+        class TCPServerListener implements ActionListener
         {
             @Override
             public void actionPerformed(ActionEvent e)
@@ -180,7 +210,7 @@ class TCPClient
                    try{
                         String str = tf.getText();
                         tf.setText("");
-                        ta.append("客户端说:"+str+"\n");
+                        ta.append("服务器说:"+str+"\n");
                         dos.writeUTF(str);
                         if(str.equalsIgnoreCase("再见"))
                         {

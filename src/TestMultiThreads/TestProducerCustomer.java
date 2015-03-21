@@ -55,7 +55,7 @@ class SynStack
 	{
 		try
 		{
-			Thread.sleep(1000);
+			Thread.sleep(500);
 		} catch (InterruptedException e1)
 		{
 			// TODO Auto-generated catch block
@@ -66,6 +66,7 @@ class SynStack
 		{
 			try
 			{
+				System.out.println("生产已达上限，再生产容易造成供需不平衡");
 				this.wait();
 			} catch (InterruptedException e)
 			{
@@ -77,7 +78,12 @@ class SynStack
 		{
 			this.notify(); //如果达到3的时候通知他们进行生产
 		}*/
-		this.notify();
+		if(count > 1)
+		{
+			System.out.println(count+"大家可以来消费了");
+			this.notify(); //一有则通知大家进行消费
+		}
+
 
 		System.out.printf("It generates %d product.It is %c\n",count,c);
 		ss[count] = c;
@@ -86,11 +92,21 @@ class SynStack
 	//synchronized 如果不加，则报错
 	public synchronized char pop()
 	{
+		try
+		{
+			Thread.sleep(100);
+		} catch (InterruptedException e1)
+		{
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		//if(count == 0)
 		while(count == 0)
 		{
+			//this.notify();//通知push线程进行生产
 			try
 			{
+				System.out.println("产品已售空，请联系生产商");
 				this.wait();
 			} catch (InterruptedException e)
 			{
@@ -100,7 +116,9 @@ class SynStack
 		}
 		if(count == 3)
 		{
-			this.notify(); //如果达到3的时候通知他们进行生产
+			System.out.println("该督促生产了，并且可以继续销售");
+			this.notify(); //如果达到3的时候通知他们进行生产（push）
+			
 		}
 		//this.notify();
 		

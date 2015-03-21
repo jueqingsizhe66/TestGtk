@@ -198,7 +198,7 @@ public class MyORM
 	 * @return
 	 */
 	//----------------------delete 程序结束--------------------
-	public static Object select(Class clazz,int id) throws SQLException
+	public static Object select(Class clazz,String num) throws SQLException
 	{
 		Object b1 = null;
 		b1 = getInstance(clazz);
@@ -224,16 +224,16 @@ public class MyORM
 		StringBuilder sbSQL = new StringBuilder();
 		
 		//第一步 拼接  insert
-		sbSQL.append("select * from ").append(className).append(" where id = ?");
+		sbSQL.append("select * from ").append(className).append(" where num = ?");
 		//获取到 ResultSet
-		ResultSet rs = JDBCUtils.executeQuery(sbSQL.toString(), id);
+		ResultSet rs = JDBCUtils.executeQuery(sbSQL.toString(), num);
 		if(!rs.next())
 		{
-			System.out.println("当前版本没有"+id+"的信息");
+			System.out.println("当前版本没有"+num+"的信息");
 //			return;
 		}else
 		{
-			System.out.println("当前版本有"+id+"的信息");
+			System.out.println("当前版本有"+num+"的信息");
 			for(String propName : listFieldName)
 			{
 				PropertyDescriptor propDesc = findPropertyDescriptor(propName, pro);
@@ -242,11 +242,34 @@ public class MyORM
 				//invoke(propDesc, b1,rs.getString(propName));
 			}
 		}
-		//设置id字段
-		PropertyDescriptor propDesc1 = findPropertyDescriptor("id", pro);
-		invoke(propDesc1, b1,id);
+		//设置num字段
+		PropertyDescriptor propDesc1 = findPropertyDescriptor("num", pro);
+		invoke(propDesc1, b1,num);
 		System.out.println("成功");
 		return b1;
+		
+		//先非泛型  再泛型的selectById
+	}
+	
+	public static Object select(Class clazz) throws SQLException
+	{
+		int count = 0;
+		//用于数据库表
+		String className = clazz.getSimpleName(); 
+		StringBuilder sbSQL = new StringBuilder();
+		
+		//第一步 拼接  insert
+		sbSQL.append("select count(*) tb from ").append(className);
+		//获取到 ResultSet
+		ResultSet rs = JDBCUtils.executeQuery(sbSQL.toString());
+		while(rs.next())
+		{
+			count = rs.getInt("tb");
+			System.out.println("总共有"+count+"个数据");
+		}
+		
+		System.out.println("成功");
+		return count;
 		
 		//先非泛型  再泛型的selectById
 	}

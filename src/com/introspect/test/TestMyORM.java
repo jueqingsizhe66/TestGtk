@@ -28,10 +28,10 @@ public class TestMyORM
 			//MyORM.insert(yangzhou);
 			//MyORM.delete(Person.class, 2);
 			
-			
+			System.out.println(MyORM.select(Person.class));
 			/*Person p1 = (Person)MyORM.select(Person.class, 4);
 			System.out.println(p1);*/
-			MyORM.update(Person.class, 50, 4);
+			//MyORM.update(Person.class, 50, 4);
 		} catch (SQLException e)
 		{
 			// TODO Auto-generated catch block

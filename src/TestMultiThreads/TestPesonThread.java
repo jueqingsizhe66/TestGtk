@@ -48,19 +48,27 @@ public class TestPesonThread
 
 class A implements Runnable
 {
-    private static int tickets = 0;
+    private static int tickets = 10;
 	@Override
-	public void run()
+	public  void run()
 	{
 		// TODO Auto-generated method stub
 		while(true)
 		{
 			synchronized("aaa")
+		//	synchronized(TestPesonThread.class)
 			{
-				if(tickets < 10)
+				try
 				{
-					System.out.println(Thread.currentThread().getName()+tickets);
-					tickets++;
+					Thread.sleep(1000);
+				}catch(InterruptedException e)
+				{
+					
+				}
+				if(tickets > 0)
+				{
+					System.out.println(Thread.currentThread().getName()+"е§дкЪл"+tickets);
+					tickets--;
 				}else
 				{
 					break;

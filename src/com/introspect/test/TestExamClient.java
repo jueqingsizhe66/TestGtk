@@ -1,19 +1,31 @@
 /**
  * 解释：
  */
-package TestNetwork;
-import java.net.*;
-import java.io.*;
+package com.introspect.test;
 
-// some error   swing : controler
-import javax.swing.*;
+import java.awt.BorderLayout;
+import java.awt.Button;
+import java.awt.Font;
+import java.awt.Frame;
+import java.awt.Panel;
+import java.awt.TextArea;
+import java.awt.TextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.net.Socket;
 
-import java.awt.*;
-import java.awt.event.*;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+
+
 /**
  * @author    叶昭良
- * @time      2015年3月19日下午3:22:27
- * @version   TestNetworkTestClient4 V1.0
+ * @time      2015年3月21日下午2:56:17
+ * @version   com.introspect.testTestExamClient V1.0
  * 功能： 
                 步骤：
  * 注意：
@@ -21,7 +33,7 @@ import java.awt.event.*;
                 思考：
  * 回顾：
  */
-public class TestClient4
+public class TestExamClient
 {
 
 	/**
@@ -63,6 +75,7 @@ public class TestClient4
 	}
 
 }
+
 class TCPClient
 {
         // class variables

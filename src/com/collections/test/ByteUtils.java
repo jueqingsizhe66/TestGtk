@@ -20,6 +20,7 @@ public class ByteUtils
      * 
      * <pre>
      * 将4个byte数字组成的数组合并为一个float数.
+     * &是位与，&一般用于取一个字节（八位）的位数
      * </pre>
      * 
      * @param arr
@@ -90,6 +91,8 @@ public class ByteUtils
     public static byte[] charToByte2(char c) {
         byte[] arr = new byte[2];
         arr[0] = (byte) (c >> 8);
+        //0xff 其实就是一个字节，也就是最低的一个直接
+        //通过&来截断最低的一个直接
         arr[1] = (byte) (c & 0xff);
         return arr;
     }

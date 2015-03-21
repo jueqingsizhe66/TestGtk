@@ -54,8 +54,9 @@ public class TestClient2
 				if(str.equalsIgnoreCase("byebye"))
                     break;
                 str = dis.readUTF();
-                System.out.println("The opposite said that" + str);
-
+                System.out.println("·þÎñÆ÷ said that" + str+"\n");
+				if(str.equalsIgnoreCase("byebye"))
+                    break;
 
 			}
 		} catch (IOException e)
