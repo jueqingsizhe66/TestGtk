@@ -8,7 +8,9 @@ import java.net.*;
  * @author    叶昭良
  * @time      2015年3月19日下午2:38:37
  * @version   TestNetworkTestServer2 V1.0
- * 功能： 
+ * 功能：   在第一版本服务器的基础上  修正了客户端的只发送 不接受
+ *         以及服务器端的只接受不发送
+ *         并用BufferedReader获取System.in的内容输送到客户端
                 步骤：
  * 注意：
  * 掌握：
