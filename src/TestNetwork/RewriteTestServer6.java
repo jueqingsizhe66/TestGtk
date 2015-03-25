@@ -4,32 +4,35 @@
 package TestNetwork;
 
 import java.awt.BorderLayout;
-import java.awt.Button;
+import java.awt.Font;
+
+
+
+
+/*import java.awt.Button;
 import java.awt.Frame;
 import java.awt.Panel;
 import java.awt.TextArea;
-import java.awt.TextField;
+import java.awt.TextField;*/
+import javax.swing.*;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.*;
+import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.LinkedBlockingQueue;
 
 
 
-
-
 /**
  * @author    叶昭良
- * @time      2015年3月23日上午12:41:10
- * @version   TestNetworkRewriteTestServer5 V1.0
+ * @time      2015年3月24日上午11:03:58
+ * @version   TestNetworkRewriteTestServer6 V1.0
  * 功能： 
                 步骤：
  * 注意：
@@ -37,7 +40,7 @@ import java.util.concurrent.LinkedBlockingQueue;
                 思考：
  * 回顾：
  */
-public class RewriteTestServer5
+public class RewriteTestServer6
 {
 
 	/**
@@ -50,17 +53,42 @@ public class RewriteTestServer5
 	 */
 	public static void main(String[] args) throws Exception
 	{
+		Font font = new Font("Dialog", Font.PLAIN, 12); //一下是改变默认的组建上显示的字体，这样更加美观一些
+		UIManager.put("MenuBar.font", font);
+		UIManager.put("MenuItem.font", font);
+		UIManager.put("Menu.font", font);
+		UIManager.put("PopupMenu.font", font);
+		UIManager.put("ToolBar.font", font);
+		UIManager.put("ToolTip.font", font);
+		UIManager.put("TabbedPane.font", font);
+		UIManager.put("Label.font", font);
+		UIManager.put("List.font", font);
+		UIManager.put("ComboBox.font", font);
+		UIManager.put("Button.font", font);
+		UIManager.put("Table.font", font);
+		UIManager.put("TableHeader.font", font);
+		UIManager.put("Tree.font", font);
+		UIManager.put("TextField.font", font);
+		UIManager.put("TextArea.font", font);
+		UIManager.put("TitledBorder.font", font);
+		UIManager.put("OptionPane.font", font);
+		UIManager.put("RadioButton.font", font);
+		UIManager.put("CheckBox.font", font);
+		UIManager.put("ToggleButton.font", font);
+		UIManager.put("Dialog.font", font);
+		UIManager.put("Panel.font", font);
 		// TODO Auto-generated method stub
-	    ServerSocket ss = new ServerSocket(5599);
+		ServerSocket ss = new ServerSocket(6699);
         while(true)
         {
-        	new TCPServer2(ss.accept());
+        	new TCPServer3(ss.accept());
         }
-	    
 	}
 
 }
-class TCPServer2
+
+
+class TCPServer3
 {
         // class variables
         // class variables
@@ -71,10 +99,12 @@ class TCPServer2
          private DataOutputStream dos = null;
          private DataInputStream dis = null;
          // UI
-         private static Frame f = null;
-         private static TextArea ta = null;
-         private static TextField tf = null;
-         private static Button  bn = null;
+        
+         private static JFrame f = null;
+         private static JTextArea ta = null;
+         private static JTextField tf = null;
+         private static JButton  bn = null;
+         private static JScrollPane jScroll = null;
          
          private static boolean isPrint = false;//是否输出消息标志
          private static List user_list = new CopyOnWriteArrayList();//登陆用户集合
@@ -86,51 +116,38 @@ class TCPServer2
          {
         	 createUI();
          }
-         public  TCPServer2(Socket s) throws Exception
+         public  TCPServer3(Socket s) throws Exception
          {
         	 this.s = s;
         	 new PrintOutThread();//创建向客户端发送消息线程
              new ServerThread(this.s);  
-             //本以为可以让其线程安全的，没想到没什么效果 反而更卡
-/*             Collections.synchronizedList(user_list);
-             Collections.synchronizedList(thread_list);
-             Collections.synchronizedList(message_list);*/
-            // launch();
+
         	 
          }
        
-        // construct member
-        /*
-        public TCPServer()
-        {
-
-        }
-        */
+  
         public static void createUI()
         {
-            Frame f = new Frame("服务器");
-            ta = new TextArea();
-            tf = new TextField();
-            Panel p = new Panel(new BorderLayout());
-            bn = new Button("发送");
+            JFrame f = new JFrame("服务器");
+            ta = new JTextArea();
+            jScroll = new JScrollPane(ta);
+            jScroll.setHorizontalScrollBarPolicy(
+            		JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+            jScroll.setVerticalScrollBarPolicy(
+            		JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+            tf = new JTextField();
+            JPanel p = new JPanel(new BorderLayout());
+            bn = new JButton("发送");
             p.add(tf,BorderLayout.CENTER);
             p.add(bn,BorderLayout.EAST);
 
-            f.add(ta,BorderLayout.CENTER);
+            f.add(jScroll,BorderLayout.CENTER);
             f.add(p,BorderLayout.SOUTH);
 
             f.setSize(400,200);
             f.setVisible(true);
-            //f.setVisable(true);
-/*            tf.addActionListener(new TCPServerListener());
-            bn.addActionListener(new TCPServerListener());*/
-            f.addWindowListener(new WindowAdapter()
-                    {
-                        public void windowClosing(WindowEvent e)
-                        {
-                            System.exit(0);
-                        }
-                    });
+            f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
         }
         
 
@@ -165,8 +182,7 @@ class TCPServer2
 	                        {
 	                            close();
 	                            System.exit(0);
-	                        }
-	                        if(str.equalsIgnoreCase("showuser"))
+	                        }if(str.equalsIgnoreCase("showuser"))
 	                        {
 	                        	//会传递给客户端 实际上是想自己看
 	                        	//dos.writeUTF(st.listOnlineUsers());
@@ -176,6 +192,7 @@ class TCPServer2
 	                        {
 	                        	st.pushMessage("服务器说:"+str+"\n");
 	                        }
+	                       
                         	
                        }
                    }catch(Exception e1)
@@ -220,6 +237,7 @@ class TCPServer2
                             dos.writeUTF(this.listOnlineUsers());
                             line = dis.readUTF();
                         }
+                        
                         //第一次进入，保存名字
 
                         if(flag++ ==0){
@@ -307,6 +325,7 @@ class TCPServer2
                         {
                             try
 							{
+                            	// if thread == threadthis
                             	//this.
                             	thread.sendMessage(message);
 							} catch (Exception e)
@@ -324,3 +343,4 @@ class TCPServer2
             }
         }
 }
+
